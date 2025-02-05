@@ -1,13 +1,14 @@
+import Hero from "./components/Hero/Hero"
 import MyRoutes from "./MyRoutes"
-import Home from "./pages/Home"
 import Profile from "./pages/Profile"
 
 
 function App() {
   return (
     <>
+      <Hero/>
       <MyRoutes/>
-      <Home/>
+      
       <Profile/>
     </>
   )
