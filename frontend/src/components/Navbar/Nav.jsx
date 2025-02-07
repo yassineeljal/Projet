@@ -5,10 +5,11 @@ import Logo from '../../assets/picsB.png'
 
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
+  { name: 'Home', href: './' },
+  { name: 'Profile', href: '/Profile' },
+  { name: 'Album', href: '/Album' },
+  { name: 'Liked', href: '/Liked' },
+
 ]
 
 function classNames(...classes) {

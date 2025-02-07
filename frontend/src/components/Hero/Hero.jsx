@@ -9,11 +9,13 @@ import BgHero from '../../assets/bg-hero.jpg'
 import "./Hero.css"
 
 const navigation  = [
-  { name: 'Album', href: '#' },
-  { name: 'Like', href: '#' },
-  { name: 'En voir plus', href: '#' },
-  { name: 'Profil', href: '/Profile' },
-  { name: 'Contact', href: '#' }
+  { name: 'Home', href: './' },
+  { name: 'Profile', href: '/Profile' },
+  { name: 'Album', href: '/Album' },
+  { name: 'Liked', href: '/Liked' },
+
+ 
+ 
 ]
 
 function Hero() {
