@@ -1,8 +1,10 @@
 'use client'
 import { useState } from 'react'
-import { Dialog, DialogPanel } from '@headlessui/react'
+import { Dialog, DialogPanel, MenuButton, Menu, MenuItem, MenuItems} from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import Logo from '../../assets/pics.png'
+import LogoB from '../../assets/picsB.png'
+import LogoN from '../../assets/picsN.png'
+
 import BgHero from '../../assets/bg-hero.jpg'
 import "./Hero.css"
 
@@ -10,7 +12,7 @@ const navigation  = [
   { name: 'Album', href: '#' },
   { name: 'Like', href: '#' },
   { name: 'En voir plus', href: '#' },
-  { name: 'Profil', href: '#' },
+  { name: 'Profil', href: '/Profile' },
   { name: 'Contact', href: '#' }
 ]
 
@@ -25,9 +27,8 @@ function Hero() {
             <a href="#" className="-m-1.5 p-1.5">
               <img
                 alt="Logo"
-                src={Logo}
-                className="h-25 w-auto"
-                style={{ borderRadius: "100%" }}
+                src={LogoB}
+                className="h-8 w-auto"
 
               />
             </a>
@@ -50,9 +51,51 @@ function Hero() {
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="#" className="text-sm/6 font-semibold text-white">
+          <a href="#" className="text-sm/6 font-semibold text-white">
               Se connecter <span aria-hidden="true">&rarr;</span>
             </a>
+          {/*<Menu as="div" className="relative ml-3">
+                              <div>
+                                <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
+                                  <span className="absolute -inset-1.5" />
+                                  <span className="sr-only">Open user menu</span>
+                                  <img
+                                    alt="profile"
+                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                    className="size-8 rounded-full"
+                                  />
+                                </MenuButton>
+                              </div>
+                              <MenuItems
+                                transition
+                                className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+                              >
+                                <MenuItem>
+                                  <a
+                                    href="#"
+                                    className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
+                                  >
+                                    Your Profile
+                                  </a>
+                                </MenuItem>
+                                <MenuItem>
+                                  <a
+                                    href="#"
+                                    className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
+                                  >
+                                    Settings
+                                  </a>
+                                </MenuItem>
+                                <MenuItem>
+                                  <a
+                                    href="#"
+                                    className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
+                                  >
+                                    Sign out
+                                  </a>
+                                </MenuItem>
+                              </MenuItems>
+                            </Menu>*/}
           </div>
         </nav>
         <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
@@ -60,11 +103,11 @@ function Hero() {
           <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
-                <span className="sr-only">Pixios</span>
+                <span className="sr-only ">Pixios</span>
                 <img
                   alt=""
-                  src={Logo}
-                  className="h-25 w-auto"
+                  src={LogoN}
+                  className="h-25 w-auto "
 
                 />
               </a>
@@ -119,8 +162,8 @@ function Hero() {
         </div>
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
           <div className="text-center">
-            <h1 className="text-5xl font-semibold tracking-tight text-balance text-gray-300 sm:text-7xl" >
-              Pixios
+            <h1 className="text-5xl font-spartan font-bold tracking-tight text-balance text-gray-300 sm:text-7xl" >
+              Pixios.
             </h1>
 
           
