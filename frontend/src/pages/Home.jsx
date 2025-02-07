@@ -1,15 +1,16 @@
 import Hero from "../components/Hero/Hero.jsx";
-import Cards from "../components/Cards/Cards.jsx";
+import CardsH from "../components/Cards/CardsH.jsx";
 import Footer from "../components/Footer/Footer.jsx";
+import "./Home.css"
 
 function Home() {
     return (
-        <>
+        <div className="home">
             <Hero/>
-            <Cards/>
+            <CardsH/>
             <Footer />
 
-        </>
+        </div>
     );
 }
 

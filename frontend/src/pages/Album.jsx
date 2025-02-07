@@ -1,16 +1,15 @@
 import React from 'react';
 import Nav from '../components/Navbar/Nav.jsx';
-import Cards from "../components/Cards/Cards.jsx";
+import CardsAL from "../components/Cards/CardsAL.jsx";
 import Footer from '../components/Footer/Footer.jsx';
-import GrosBoutons from '../components/GrosBoutons/GrosBoutons.jsx';
 
 function Album(props) {
     return (
         <>
         <Nav />
-        <GrosBoutons />
+        <h1 className="text-white text-4xl font-bold mb-8">Nous sommes dans l'album</h1>
 
-        <Cards />
+        <CardsAL />
         <Footer />
 
         

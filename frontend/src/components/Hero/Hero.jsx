@@ -22,7 +22,7 @@ function Hero() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <div className="hero-section" style={{ backgroundImage: `url(${BgHero})`, backgroundSize: 'cover', height: '100vh' }}>
+    <div className="hero-section" >
       <header className="absolute inset-x-0 top-0 z-50">
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
@@ -174,8 +174,8 @@ function Hero() {
 
             <div style={{ alignItems: "center" }}>
               <form class="d-flex" style={{paddingLeft:"200px"}} >
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                <button class="btn btn-outline-success" type="submit" style={{cursor:"pointer"}}>Search</button>
+                <input class="form-control me-2" type="search" placeholder="Cherchez une image" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit" style={{cursor:"pointer"}}>Rechercher</button>
               </form>
             </div>
 
