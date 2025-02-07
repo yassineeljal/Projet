@@ -10,7 +10,8 @@ function Profile(props) {
            <Nav/>
            <Banner/>
            <GrosBoutons/>
-           <Footer/>
+           <Footer />
+
         </>
     );
 }
