@@ -4,3 +4,4 @@
 - npm install @heroicons/react
 - npm i -D react-router-dom@latest
 - npm install bootstrap
+- npm install react-icons
