@@ -1,25 +1,42 @@
 'use client'
-import { useState } from 'react'
+import {useEffect, useState} from 'react'
 import { Dialog, DialogPanel, MenuButton, Menu, MenuItem, MenuItems} from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import LogoB from '../../assets/picsB.png'
 import LogoN from '../../assets/picsN.png'
 
-import BgHero from '../../assets/bg-hero.jpg'
 import "./Hero.css"
+import axios from "axios";
 
 const navigation  = [
   { name: 'Home', href: './' },
   { name: 'Profile', href: '/Profile' },
   { name: 'Album', href: '/Album' },
   { name: 'Liked', href: '/Liked' },
-
- 
- 
 ]
+
+
 
 function Hero() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [input, setInput] = useState("")
+  const [image, setImage] = useState([])
+  const API_URL="https://api.unsplash.com/search/photos"
+
+  const changement = (e) => {
+    setInput(e.target.value)
+  }
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+  };
+
+
+  useEffect(() => {
+    axios.get(`${API_URL}?query=${input.current.value}&client_id=${import.meta.env.VITE_API_KEY}`)
+        .then(response => setImage(response.data))
+        .catch(err => console.log(err))
+  },[]);
 
   return (
     <div className="hero-section" >
@@ -173,9 +190,9 @@ function Hero() {
 {/*Code pour la barre de recherche */}
 
             <div style={{ alignItems: "center" }}>
-              <form class="d-flex" style={{paddingLeft:"200px"}} >
-                <input class="form-control me-2" type="search" placeholder="Cherchez une image" aria-label="Search" />
-                <button class="btn btn-outline-success" type="submit" style={{cursor:"pointer"}}>Rechercher</button>
+              <form className="d-flex" style={{paddingLeft:"200px"}} onSubmit={handleSearch}>
+                <input className="form-control me-2" type="search" placeholder="Cherchez une image" aria-label="Search" onChange = {(e) => changement(e)}/>
+                <button className="btn btn-outline-success" type="submit" style={{cursor:"pointer"}} >Rechercher</button>
               </form>
             </div>
 
