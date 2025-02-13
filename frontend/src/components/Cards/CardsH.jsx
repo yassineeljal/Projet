@@ -1,7 +1,35 @@
 import "./CardsH.css"
+import axios from "axios";
+import { useState} from 'react'
 
-function CardsH(image){
 
+
+function CardsH(){
+
+    const [image, setImage] = useState([])
+    const [value,setValue] = useState("")
+    const API_URL="https://api.unsplash.com/search/photos"
+
+    const changement = (e) => {
+    setValue(e.target.value)
+    }
+
+
+    const fetchImage = async () => {
+        try {
+        const response = await axios.get(`${API_URL}?query=${value}&client_id=${import.meta.env.VITE_API_KEY}`);
+        setImage(response.data.results);
+        } catch (error) {
+        console.error("Error fetching image:", error);
+        }
+    };
+
+    const handleSearch = (event) => {
+    event.preventDefault();
+    fetchImage()
+    };
+
+      
 
 
 
@@ -10,15 +38,27 @@ function CardsH(image){
 
     return (
         <>
-          <div className="flex justify-center items-center min-h-screen" >
-            <div className="grid grid-cols-2 gap-x-16 gap-y-24 mt-30" style={{ paddingBottom: "70px" }}>
-                {{image}.map((carte, i) => (
-                    <div className="cards w-240px h-80 flex items-center justify-center" key={i}>
-                        <figure className="card" >{carte.results.urls.full}</figure>
-                    </div>
-                ))}
+            <div className="min-h-screen flex flex-col justify-center items-center ">
+     
+      
+     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
+       {image.map((carte, i) => (
+         <div
+           key={i}
+           className="w-64 h-80 flex justify-center items-center rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105"
+         >
+           <img src={carte.urls.full} className="w-full h-full object-cover" />
+         </div>
+       ))}
+     </div>
+   </div>
+          <div className="bar">
+              <form className="d-flex" onSubmit={handleSearch}>
+                <input className="form-control me-2" type="search" placeholder="Cherchez une image" aria-label="Search" onChange = {(e) => changement(e)}/>
+                <button className="btn btn-outline-success" type="submit" style={{cursor:"pointer"}} >Rechercher</button>
+              </form>
             </div>
-          </div>
+            
         </>
     );
 }

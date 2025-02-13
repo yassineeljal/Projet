@@ -5,6 +5,8 @@
 - npm i -D react-router-dom@latest
 - npm install bootstrap
 - npm install react-icons
+- npm i react-bootstrap
+- npm install react-photo-album
 
 # Outils utilisés:
 - https://www.youtube.com/watch?v=0YoT44j3Jg4&t=1242s
