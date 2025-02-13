@@ -41,16 +41,16 @@ function CardsH(){
             <div className="min-h-screen flex flex-col justify-center items-center ">
      
       
-     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
-       {image.map((carte, i) => (
-         <div
-           key={i}
-           className="w-64 h-80 flex justify-center items-center rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105"
-         >
-           <img src={carte.urls.full} className="w-full h-full object-cover" />
-         </div>
-       ))}
-     </div>
+     <div className="grid grid-cols-4 gap-12 " style={{paddingBottom:"30px", cursor:"pointer"}}>
+  {image.slice(0, 8).map((carte, i) => (
+    <div
+      key={i}
+      className="w-64 h-80 flex justify-center items-center rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105"
+    >
+      <img src={carte.urls.full} className="w-full h-full object-cover" />
+    </div>
+  ))}
+</div>
    </div>
           <div className="bar">
               <form className="d-flex" onSubmit={handleSearch}>
