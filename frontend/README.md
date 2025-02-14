@@ -7,6 +7,7 @@
 - npm install react-icons
 - npm i react-bootstrap
 - npm install react-photo-album
+- npm i mdb-react-ui-kit
 
 # Outils utilisés:
 - https://www.youtube.com/watch?v=0YoT44j3Jg4&t=1242s
