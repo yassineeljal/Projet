@@ -38,10 +38,10 @@ function CardsH(){
 
     return (
         <>
-            <div className="min-h-screen flex flex-col justify-center items-center ">
+           
      
       
-     <div className="grid grid-cols-4 gap-12 " style={{paddingBottom:"30px", cursor:"pointer"}}>
+     <div className="grid grid-cols-4 gap-12 " style={{paddingBottom:"30px", cursor:"pointer", paddingLeft:"20px"}}>
   {image.slice(0, 8).map((carte, i) => (
     <div
       key={i}
@@ -51,7 +51,7 @@ function CardsH(){
     </div>
   ))}
 </div>
-   </div>
+   
           <div className="bar">
               <form className="d-flex" onSubmit={handleSearch}>
                 <input className="form-control me-2" type="search" placeholder="Cherchez une image" aria-label="Search" onChange = {(e) => changement(e)}/>

@@ -9,6 +9,8 @@ const navigation = [
   { name: 'Profile', href: '/Profile' },
   { name: 'Album', href: '/Album' },
   { name: 'Liked', href: '/Liked' },
+  { name: 'AboutPixios', href: '/AboutPixiosPage' }
+
 
 ]
 

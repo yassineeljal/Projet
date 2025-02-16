@@ -7,7 +7,6 @@ function Album(props) {
     return (
         <>
         <Nav />
-        <h1 className="text-white text-4xl font-bold mb-8">Nous sommes dans l'album</h1>
 
         <CardsAL />
         <Footer />

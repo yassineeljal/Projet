@@ -7,11 +7,13 @@ import LogoN from '../../assets/picsN.png'
 
 import "./Hero.css"
 
-const navigation  = [
+
+const navigation = [
   { name: 'Home', href: './' },
   { name: 'Profile', href: '/Profile' },
   { name: 'Album', href: '/Album' },
   { name: 'Liked', href: '/Liked' },
+  { name: 'AboutPixios', href: '/AboutPixiosPage' }
 ]
 
 

@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Album from './pages/Album';
 import Liked from './pages/Liked';
+import AboutPixiosPage from './pages/AboutPixiosPage';
 
 function MyRoutes() {
     return (
@@ -15,6 +16,9 @@ function MyRoutes() {
                 <Route path='/Album' element={<Album/>} />
                 <Route path='/Liked' element={<Liked/>} />
                 <Route path='*' element={<NotFound/>} />
+                <Route path='/AboutPixiosPage' element={<AboutPixiosPage/>} />
+
+
 
 
             </Routes>
