@@ -1,6 +1,7 @@
 import React from 'react';
 import Takfa from '../../assets/Takfa.jpeg';
 import Yassine from '../../assets/Yassine.jpeg';
+import "./AboutPixiosComponent.css"
 
 const AboutPixiosComponent = () => {
   return (
@@ -21,6 +22,7 @@ const AboutPixiosComponent = () => {
                 src={Takfa}
                 alt="Takfa"
                 className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg"
+                id='avatar'
               />
             </div>
             <div className="p-6">
@@ -35,11 +37,13 @@ const AboutPixiosComponent = () => {
 
         <div className="sm:w-1/2 lg:w-1/3 p-4">
           <div className="shadow-lg rounded-lg overflow-hidden bg-white text-center">
-            <div className="flex justify-center mt-6">
+            <div className="flex justify-center mt-6 ">
               <img
                 src={Yassine}
                 alt="Yassine"
                 className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg"
+                id='avatar'
+
               />
             </div>
             <div className="p-6">

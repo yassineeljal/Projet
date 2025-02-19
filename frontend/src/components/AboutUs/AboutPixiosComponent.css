@@ -1,0 +1,6 @@
+#avatar:hover{
+    transition: 0.5s;
+    font-size: large;
+    transform: scale(1.1);
+  }
+  

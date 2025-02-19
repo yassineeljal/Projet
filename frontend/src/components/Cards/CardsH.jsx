@@ -29,19 +29,12 @@ function CardsH(){
     fetchImage()
     };
 
-      
-
-
-
-
-
-
     return (
         <>
            
      
       
-     <div className="grid grid-cols-4 gap-12 " style={{paddingBottom:"30px", cursor:"pointer", paddingLeft:"20px"}}>
+     <div className="grid grid-cols-4 gap-12  " style={{paddingBottom:"100px", cursor:"pointer", paddingLeft:"20px"}}>
   {image.slice(0, 8).map((carte, i) => (
     <div
       key={i}

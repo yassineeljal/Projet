@@ -14,7 +14,7 @@ const cards = [
 
 function CardGallery() {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-black via-gray-800 to-black p-10">
+    <div className="h-210 flex flex-col justify-center items-center bg-gradient-to-b from-black via-gray-800 to-black p-10">
      
       
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">

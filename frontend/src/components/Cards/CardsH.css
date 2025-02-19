@@ -1,8 +1,8 @@
    /*code pour bar de recherche*/
    .bar{
     position: absolute;
-    bottom: 250px;
-    left: 37%;
+    bottom: 50%;
+    left: 40%;
 
    }
   form.d-flex {
@@ -40,8 +40,6 @@
   .btn:hover {
     background-color: #00BFFF; 
     box-shadow: 0 4px 8px rgba(0, 191, 255, 0.5);
-    font-size: large;
-    transform: scale(1.05);
 
 
   }

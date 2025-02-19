@@ -1,7 +1,6 @@
 import React from 'react';
 import Nav from '../components/Navbar/Nav.jsx';
 import CardsAL from "../components/Cards/CardsAL.jsx";
-import Footer from '../components/Footer/Footer.jsx';
 
 function Liked(props) {
     return (
@@ -9,7 +8,6 @@ function Liked(props) {
         <Nav />
 
         <CardsAL />
-        <Footer />
 
         
 
