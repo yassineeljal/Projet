@@ -7,7 +7,6 @@ function Liked(props) {
     return (
         <>
         <Nav />
-        <h1 className="text-white text-4xl font-bold mb-8">Nous sommes dans les Liked</h1>
 
         <CardsAL />
         <Footer />
