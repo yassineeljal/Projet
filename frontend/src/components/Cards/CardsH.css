@@ -1,18 +1,18 @@
    /*code pour bar de recherche*/
-   .bar{
+   .barDiv{
     position: absolute;
     bottom: 50%;
     left: 40%;
 
    }
-  form.d-flex {
+   .barcontainer {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-top: 30px;
   }
   
-  .form-control {
+  .search {
     background-color: white;
     border: 2px solid #87CEEB; 
     border-radius: 8px;
@@ -21,13 +21,13 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   
-  .form-control:focus {
+  .search:focus {
     outline: none;
     border-color: #00BFFF; 
     box-shadow: 0 0 8px rgba(0, 191, 255, 0.5);
   }
   
-  .btn {
+  .bouttonBar {
     background-color: #87CEEB;
     border: none;
     color: white;

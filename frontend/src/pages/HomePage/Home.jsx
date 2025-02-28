@@ -1,6 +1,6 @@
-import Hero from "../components/Hero/Hero.jsx";
-import CardsH from "../components/Cards/CardsH.jsx";
-import Footer from "../components/Footer/Footer.jsx";
+import Hero from "../../components/Hero/Hero.jsx";
+import CardsH from "../../components/Cards/CardsH.jsx";
+import Footer from "../../components/Footer/Footer.jsx";
 import "./Home.css"
 
 function Home() {

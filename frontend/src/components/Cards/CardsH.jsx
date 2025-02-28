@@ -45,10 +45,10 @@ function CardsH(){
   ))}
 </div>
    
-          <div className="bar">
-              <form className="d-flex" onSubmit={handleSearch}>
-                <input className="form-control me-2" type="search" placeholder="Cherchez une image" aria-label="Search" onChange = {(e) => changement(e)}/>
-                <button className="btn btn-outline-success" type="submit" style={{cursor:"pointer"}} >Rechercher</button>
+          <div className="barDiv">
+              <form className="barcontainer" onSubmit={handleSearch}>
+                <input className="search" type="search" placeholder="Cherchez une image" aria-label="Search" onChange = {(e) => changement(e)}/>
+                <button className="bouttonBar" type="submit" style={{cursor:"pointer"}} >Rechercher</button>
               </form>
             </div>
             

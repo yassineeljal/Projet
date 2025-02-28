@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Profile from './pages/Profile';
-import Home from './pages/Home';
-import NotFound from './pages/NotFound';
-import Album from './pages/Album';
-import Liked from './pages/Liked';
-import Login from './pages/Login';
-import Inscription from './pages/Inscription';
-import AboutPixiosPage from './pages/AboutPixiosPage';
+import Profile from './pages/ProfilePage/Profile';
+import Home from './pages/HomePage/Home';
+import NotFound from "./pages/NotFoundPage/NotFound"
+import Album from './pages/AlbumPage/Album';
+import Liked from './pages/LikedPage/Liked';
+import Login from "./pages/LoginPage/Login"
+import Inscription from "./pages/InscriptionPage/Inscription"
+import AboutPixiosPage from './pages/AboutPage/AboutPixiosPage';
 
 function MyRoutes() {
     return (
