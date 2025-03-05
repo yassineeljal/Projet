@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import Logo from "../../assets/picsN.png"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
@@ -73,11 +73,6 @@ Nom d'utilisateur
                 <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">
                 Mot de passe
                 </label>
-                <div className="text-sm">
-                  <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                    Mot de passe oublié ?
-                  </a>
-                </div>
               </div>
               <div className="mt-2">
                 <input
@@ -105,9 +100,9 @@ Nom d'utilisateur
 
           <p className="mt-10 text-center text-sm/6 text-gray-500">
             Vous n'êtes pas membre?{' '}
-            <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+            <Link to={"/Inscription"} className="font-semibold text-indigo-600 hover:text-indigo-500">
               S'inscrire
-            </a>
+            </Link>
           </p>
         </div>
       </div>

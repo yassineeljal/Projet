@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import Logo from "../../assets/picsN.png"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
@@ -38,13 +38,15 @@ const submitNewUser = (e) =>{
 
   return (
     <>
-      <div className="flex h-220 flex-1 flex-col justify-center px-6 py-12 lg:px-8  bg-white">
+      <div className="flex h-230 flex-1 flex-col justify-center px-6 py-12 lg:px-8  bg-white">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm ">
-          <img
-            alt="Your Company"
-            src={Logo}
-            className="mx-auto h-50 w-auto"
-          />
+          <Link to={"/"}>
+            <img
+              alt="Your Company"
+              src={Logo}
+              className="mx-auto h-50 w-auto"
+            />
+          </Link>
           <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
             
 Inscrivez-vous
@@ -158,7 +160,7 @@ Email
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 cursor-pointer"
               >
                 S'inscrire
               </button>
