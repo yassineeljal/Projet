@@ -3,10 +3,10 @@ import Nav from '../../components/Navbar/Nav';
 import Banner from '../../components/ProfileBanner/Banner';
 import GrosBoutons from '../../components/GrosBoutons/GrosBoutons';
 
-function Profile(props) {
+function Profile({auth, setAuth}) {
     return (
         <>
-           <Nav/>
+           <Nav auth = {auth} setAuth = {setAuth} />
            <Banner/>
            <GrosBoutons/>
         </>

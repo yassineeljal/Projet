@@ -19,10 +19,13 @@ function MyRoutes() {
             <Routes>
                 <Route path='/' element={<Home/>} />
                 <Route path='/Login' element={<Login auth={auth} setAuth={setAuth}/>} />
-                <Route path='/Inscription' element={<Inscription auth={auth} setAuth={setAuth}/>} />
                 <Route path='/Profile' element={<Profile auth={auth} setAuth={setAuth}/>} />
+
+                <Route path='/Inscription' element={<Inscription auth={auth} setAuth={setAuth}/>} />
+                
                 <Route path='/Album' element={<Album auth={auth} setAuth={setAuth}/>} />
                 <Route path='/Liked' element={<Liked auth={auth} setAuth={setAuth}/>} />
+
                 <Route path='*' element={<NotFound />} />
                 <Route path='/AboutPixiosPage' element={<AboutPixiosPage/>} />
             </Routes>

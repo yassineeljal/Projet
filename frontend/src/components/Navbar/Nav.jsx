@@ -2,10 +2,11 @@ import React from 'react';
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Logo from '../../assets/picsB.png'
+import { useNavigate } from 'react-router-dom';
 
 
 const navigation = [
-  { name: 'Home', href: './' },
+  { name: 'Home', href: '/' },
   { name: 'Profile', href: '/Profile' },
   { name: 'Album', href: '/Album' },
   { name: 'Liked', href: '/Liked' },
@@ -19,7 +20,16 @@ function classNames(...classes) {
 }
 
 
-function Nav() {
+function Nav({auth, setAuth}) {
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    navigate("/")
+    setAuth(false)
+
+  }
+
     return (
         <Disclosure as="nav" className="bg-gray-800">
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -104,8 +114,8 @@ function Nav() {
                     </MenuItem>
                     <MenuItem>
                       <a
-                        href="#"
                         className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
+                        onClick={logout}
                       >
                         Sign out
                       </a>
