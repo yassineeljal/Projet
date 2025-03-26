@@ -6,12 +6,18 @@ import axios from "axios";
 
 
 
-function Login() {
+function Login({ setAuth }) {
+
+
+  const navigate = useNavigate();
+
 
   const [user, setUser] = useState({
     username:"",
     password:"",
 });
+const [error, setError] = useState(false);
+
 
 
 const setAttribut = (e) => {
@@ -19,17 +25,22 @@ const setAttribut = (e) => {
   setUser({...user, [e.target.name]: value})
 }
 
-const navigate = useNavigate();
-
-const submitLogin = (e) =>{
+const submitLogin = async (e) => {
   e.preventDefault();
-  axios.post("http://localhost:8888/pixios/login", user)
-      .then(() =>{
-          navigate("/")
-      }).catch((error) =>{
-      console.log(error);
-  });
-}
+  try {
+      const response = await axios.post(`http://localhost:8888/pixios/login/${user.username}/${user.password}`,);
+      if (response.data) {
+          setAuth(true);
+          navigate("/Profile");
+      } else {
+          setError(true);
+      }
+  } catch (err) {
+      console.error("Login failed", err);
+      setError(true);
+  }
+};
+
 
 
   return (
@@ -58,7 +69,7 @@ Nom d'utilisateur
                 <input
                   id="username"
                   name="username"
-                  type="username"
+                  type="text"
                   required
                   autoComplete="username"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
@@ -105,6 +116,8 @@ Nom d'utilisateur
             </Link>
           </p>
         </div>
+        {error && <p style={{color: "red"}}>Invalid credentials</p>}
+
       </div>
     </>
   )
