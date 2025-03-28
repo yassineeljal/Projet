@@ -1,8 +1,9 @@
 import Hero from "../../components/Hero/Hero.jsx";
 import CardsH from "../../components/Cards/CardsH.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
+import './Home.css'
 
 function Home({auth}) {
 
