@@ -17,7 +17,7 @@ const navigation = [
 
 
 
-function Hero() {
+function Hero({handleSearch,changement }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   
 
@@ -125,6 +125,12 @@ function Hero() {
             <h1 className="text-5xl font-spartan font-bold tracking-tight text-balance text-gray-300 sm:text-7xl" >
               Pixios.
             </h1>
+            <div className="barDiv">
+              <form className="barcontainer" onSubmit={handleSearch}>
+                <input className="search" type="search" placeholder="Cherchez une image" aria-label="Search" onChange = {(e) => changement(e)}/>
+                <button className="bouttonBar" type="submit" style={{cursor:"pointer"}} >Rechercher</button>
+              </form>
+            </div>
           </div>
         </div>
         <div

@@ -1,7 +1,7 @@
 import React from "react";
 import { FaHeart, FaImages } from "react-icons/fa";
 
-function Choix(props) {
+function Choix() {
     return (
 <div className="flex justify-center items-center h-150 bg-gradient-to-b from-black via-gray-800 to-black space-x-16 p-10">
 
