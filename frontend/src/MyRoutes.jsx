@@ -13,6 +13,12 @@ function MyRoutes() {
 
     const [auth, setAuth] = useState(false);
 
+    const [userProfile, setUserProfile] = useState({
+        username:"",
+        firstname:"",
+        lastname:""
+      });
+
 
 
     return (
@@ -20,7 +26,7 @@ function MyRoutes() {
             <Routes>
                 <Route path='/' element={<Home auth={auth} />} />
                 <Route path='/HomeClient' element={<HomeClient auth={auth}/>} />
-                <Route path='/Login' element={<Login auth={auth} setAuth={setAuth}/>} />
+                <Route path='/Login' element={<Login auth={auth} setAuth={setAuth} setUserProfile = {setUserProfile} />} />
                 <Route path='/Profile' element={<Profile auth={auth} setAuth={setAuth}/>} />
 
                 <Route path='/Inscription' element={<Inscription auth={auth} setAuth={setAuth}/>} />

@@ -6,7 +6,7 @@ import axios from "axios";
 
 
 
-function Login({ setAuth }) {
+function Login({ setAuth, setUserProfile }) {
 
 
   const navigate = useNavigate();
@@ -20,18 +20,23 @@ const [error, setError] = useState(false);
 
 
 
+
 const setAttribut = (e) => {
   const value = e.target.value;
   setUser({...user, [e.target.name]: value})
 }
+
 
 const submitLogin = async (e) => {
   e.preventDefault();
   try {
       const response = await axios.post(`http://localhost:8888/pixios/login/${user.username}/${user.password}`,);
       if (response.data) {
+          const response2 = await axios.post(`http://localhost:8888/pixios/profile/${user.username}/${user.password}`,);
+          setUserProfile(response2.data)
           setAuth(true);
           navigate("/Profile");
+
       } else {
           setError(true);
       }
@@ -40,6 +45,8 @@ const submitLogin = async (e) => {
       setError(true);
   }
 };
+
+
 
 
 
