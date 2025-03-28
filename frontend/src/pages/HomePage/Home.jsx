@@ -3,6 +3,7 @@ import CardsH from "../../components/Cards/CardsH.jsx";
 import { useEffect, useState } from "react";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
+import './Home.css'
 
 function Home({auth}) {
 

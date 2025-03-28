@@ -5,7 +5,7 @@ import "./AboutPixiosComponent.css"
 
 const AboutPixiosComponent = () => {
   return (
-    <div className="font-sans m-0">
+    <div className="font-sans m-0" style={{backgroundColor:"black", paddingBottom:"200px"}}>
       <div className="p-12 text-center bg-gray-800 text-white" style={{padding:"10px"}}>
         <h1 className="text-3xl font-bold">Pourquoi Pixios? </h1>
         <p className="text-1xl ">Cherchez. Choisissez. Ajoutez.</p>

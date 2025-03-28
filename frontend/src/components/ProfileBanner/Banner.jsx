@@ -1,10 +1,10 @@
 import React from 'react';
 import { FaFacebook, FaTwitter, FaInstagram, FaEdit } from "react-icons/fa";
 import PhotoProfil from '../../assets/profil.avif'
-
+ 
 function Banner() {
     return (
-    
+   
         <div className="relative w-full h-56 bg-gradient-to-r from-blue-500 to-purple-600 text-white flex items-center justify-center shadow-lg  overflow-hidden">
         <div className="absolute inset-0 bg-black bg-opacity-30"></div>
         <div className="relative flex items-center space-x-6">
@@ -28,10 +28,12 @@ function Banner() {
               </a>
             </div>
           </div>
-          <FaEdit className="absolute top-4 right-4 cursor-pointer text-xl text-white hover:text-gray-300" />
+          <a href="/EditProfile">
+          <FaEdit className="absolute top-4 right-4 cursor-pointer text-xl text-white hover:text-gray-300"/>
+          </a>
         </div>
       </div>
     );
 }
-
+ 
 export default Banner;
