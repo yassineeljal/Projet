@@ -1,11 +1,12 @@
 import Hero from "../../components/Hero/Hero.jsx";
 import CardsH from "../../components/Cards/CardsH.jsx";
-import "./Home.css"
 import { useState } from "react";
 import axios from "axios"
+import { useNavigate } from "react-router-dom";
 
-function Home() {
+function Home({auth}) {
 
+    const navigate = useNavigate();
     const [image, setImage] = useState([])
     const [value,setValue] = useState("")
     const API_URL="https://api.unsplash.com/search/photos"
@@ -28,6 +29,13 @@ function Home() {
     event.preventDefault();
     fetchImage()
     };
+
+
+    useEffect(() => {
+        if (auth) {
+        navigate("/HomeClient");
+        }
+    }, [navigate])
 
     return (
         <div className="home">
