@@ -1,7 +1,16 @@
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
+import { useEffect } from 'react';
  
-export default function Example() {
+export default function Example({auth, userProfile}) {
+
+  useEffect(() => {
+    if (!auth) {
+    navigate("/Login");
+    }
+}, [navigate])
+
+
   return (
     <form>
       <div className="space-y-12">
