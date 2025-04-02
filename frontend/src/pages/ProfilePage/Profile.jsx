@@ -10,7 +10,7 @@ function Profile({auth, setAuth}) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (auth) {
+        if (!auth) {
         navigate("/Login");
         }
     }, [navigate])

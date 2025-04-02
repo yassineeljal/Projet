@@ -36,6 +36,8 @@ const submitLogin = async (e) => {
           setUserProfile(response2.data)
           setAuth(true);
           navigate("/Profile");
+          console.log("connexion reussi")
+          console.log(response2.data)
 
       } else {
           setError(true);
