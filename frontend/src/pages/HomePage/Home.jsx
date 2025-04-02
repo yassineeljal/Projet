@@ -1,9 +1,9 @@
 import Hero from "../../components/Hero/Hero.jsx";
-import CardsH from "../../components/Cards/CardsH.jsx";
 import { useEffect, useState } from "react";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
 import './Home.css'
+import CardsHome from "../../components/Cards/CardsHome.jsx";
 
 function Home({auth}) {
 
@@ -41,7 +41,7 @@ function Home({auth}) {
     return (
         <div className="home">
             <Hero changement = {changement} handleSearch = {handleSearch} />
-            <CardsH image ={image} />
+            <CardsHome image ={image} />
 
         </div>
     );

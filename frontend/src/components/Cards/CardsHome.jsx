@@ -1,9 +1,9 @@
-import "./CardsH.css"
+import "./CardsAuth.css"
 
 
 
 
-function CardsH({image}){
+function CardsHome({image}){
 
 
 
@@ -29,4 +29,4 @@ function CardsH({image}){
     );
 }
 
-export default CardsH;
+export default CardsHome;
