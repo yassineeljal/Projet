@@ -5,12 +5,12 @@ import GrosBoutons from '../../components/GrosBoutons/GrosBoutons';
 import { useNavigate } from 'react-router-dom';
 
 
-function Profile({auth, setAuth}) {
+function Profile({auth, setAuth, userProfile}) {
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!auth) {
+        if (auth) {
         navigate("/Login");
         }
     }, [navigate])
@@ -19,7 +19,7 @@ function Profile({auth, setAuth}) {
     return (
         <>
            <Nav auth = {auth} setAuth = {setAuth} />
-           <Banner/>
+           <Banner userProfile = {userProfile} />
            <GrosBoutons/>
         </>
     );

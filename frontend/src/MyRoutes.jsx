@@ -9,7 +9,6 @@ import Login from "./pages/LoginPage/Login"
 import Inscription from "./pages/InscriptionPage/Inscription"
 import AboutPixiosPage from './pages/AboutPage/AboutPixiosPage';
 import HomeClient from './pages/HomeClient/HomeClient';
-import EditProfile from './pages/EditProfile/EditProfile';
 function MyRoutes() {
  
     const [auth, setAuth] = useState(false);
@@ -27,8 +26,7 @@ function MyRoutes() {
                 <Route path='/' element={<Home auth={auth} />} />
                 <Route path='/HomeClient' element={<HomeClient auth={auth}/>} />
                 <Route path='/Login' element={<Login auth={auth} setAuth={setAuth} setUserProfile = {setUserProfile} />} />
-                <Route path='/Profile' element={<Profile auth={auth} setAuth={setAuth}/>} />
-                <Route path='/EditProfile' element={<EditProfile auth={auth} userProfile = {userProfile}/>} />
+                <Route path='/Profile' element={<Profile auth={auth} setAuth={setAuth} userProfile = {userProfile}/>} />
                 <Route path='/Inscription' element={<Inscription auth={auth} setAuth={setAuth}/>} />
                
                 <Route path='/Album' element={<Album auth={auth} />} />
