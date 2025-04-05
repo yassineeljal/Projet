@@ -10,7 +10,7 @@ function Liked({auth}) {
 
 
     useEffect(() => {
-        if (!auth) {
+        if (auth) {
         navigate("/Login");
         }
     }, [navigate])

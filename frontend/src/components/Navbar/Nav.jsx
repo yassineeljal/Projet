@@ -7,7 +7,7 @@ import PhotoProfil from '../../assets/profil.avif'
 
 
 const navigation = [
-  { name: 'Home', href: '/' },
+  { name: 'Home', href: '/HomeClient' },
   { name: 'Profile', href: '/Profile' },
   { name: 'Album', href: '/Album' },
   { name: 'Liked', href: '/Liked' },

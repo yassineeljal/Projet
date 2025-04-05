@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import '../HomePage/Home.css'
 import CardsAuth from "../../components/Cards/CardsAuth";
 
-function HomeClient({auth}) {
+function HomeClient({auth, user}) {
 
     const navigate = useNavigate();
     const [image, setImage] = useState([])
@@ -21,6 +21,7 @@ function HomeClient({auth}) {
         try {
         const response = await axios.get(`${API_URL}?query=${value}&client_id=${import.meta.env.VITE_API_KEY}`);
         setImage(response.data.results);
+        console.log(response.data.results)
         } catch (error) {
         console.error("Error fetching image:", error);
         }
@@ -33,7 +34,7 @@ function HomeClient({auth}) {
 
 
     useEffect(() => {
-        if (auth) {
+        if (!auth) {
         navigate("/HomeClient");
         }
     }, [navigate])
@@ -41,7 +42,7 @@ function HomeClient({auth}) {
     return (
         <div className="home">
             <Hero changement = {changement} handleSearch = {handleSearch} />
-            <CardsAuth image ={image} />
+            <CardsAuth image ={image} user = {user} />
 
         </div>
     );

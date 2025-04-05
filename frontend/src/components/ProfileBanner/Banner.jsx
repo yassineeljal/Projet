@@ -4,9 +4,9 @@ import profilePic from '../../assets/profil.avif';
 
 function Banner({userProfile}) {
   const [profileImage, setProfileImage] = useState(localStorage.getItem('profileImage') || profilePic);
-  const [auth, setAuth] = useState(false);  // Simule l'état d'authentification
+  const [auth, setAuth] = useState(false);
 
-  const fileInputRef = useRef(null); // Création d'une référence pour l'input file
+  const fileInputRef = useRef(null);
 
   useEffect(() => {
     localStorage.setItem('profileImage', profileImage);
@@ -25,8 +25,8 @@ function Banner({userProfile}) {
   };
 
   const triggerFileInput = () => {
-    fileInputRef.current.value = null; // Réinitialiser la valeur pour permettre un nouveau clic même si un fichier est déjà sélectionné
-    fileInputRef.current.click(); // Simuler le clic sur l'input file
+    fileInputRef.current.value = null;
+    fileInputRef.current.click();
   };
 
   return (
@@ -36,7 +36,7 @@ function Banner({userProfile}) {
         <input
           type="file"
           id="file-upload"
-          ref={fileInputRef} // Utilisation de la référence
+          ref={fileInputRef} 
           className="hidden"
           accept="image/*"
           onChange={handleImageChange}

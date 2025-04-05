@@ -12,11 +12,17 @@ import HomeClient from './pages/HomeClient/HomeClient';
 function MyRoutes() {
  
     const [auth, setAuth] = useState(false);
+
     const [userProfile, setUserProfile] = useState({
         username:"",
         firstname:"",
         lastname:""
       });
+
+      const [user, setUser] = useState({
+        username:"",
+        password:"",
+    });
  
  
  
@@ -24,12 +30,12 @@ function MyRoutes() {
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<Home auth={auth} />} />
-                <Route path='/HomeClient' element={<HomeClient auth={auth}/>} />
-                <Route path='/Login' element={<Login auth={auth} setAuth={setAuth} setUserProfile = {setUserProfile} />} />
+                <Route path='/HomeClient' element={<HomeClient auth={auth}  user = {user} />} />
+                <Route path='/Login' element={<Login auth={auth} setAuth={setAuth} setUserProfile = {setUserProfile} user = {user} setUser={setUser}/>} />
                 <Route path='/Profile' element={<Profile auth={auth} setAuth={setAuth} userProfile = {userProfile}/>} />
                 <Route path='/Inscription' element={<Inscription auth={auth} setAuth={setAuth}/>} />
                
-                <Route path='/Album' element={<Album auth={auth} />} />
+                <Route path='/Album' element={<Album auth={auth}/>} />
                 <Route path='/Liked' element={<Liked auth={auth} />} />
  
                 <Route path='*' element={<NotFound />} />

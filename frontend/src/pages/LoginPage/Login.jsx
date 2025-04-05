@@ -6,16 +6,13 @@ import axios from "axios";
 
 
 
-function Login({ setAuth, setUserProfile }) {
+function Login({ setAuth, setUserProfile, user, setUser }) {
 
 
   const navigate = useNavigate();
 
 
-  const [user, setUser] = useState({
-    username:"",
-    password:"",
-});
+
 const [error, setError] = useState(false);
 
 
