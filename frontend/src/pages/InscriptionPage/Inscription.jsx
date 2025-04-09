@@ -20,7 +20,7 @@ function Inscription({auth}) {
 });
 
 useEffect(() => {
-  if (!auth) {
+  if (auth) {
   navigate("/Profile");
   }
 }, [navigate])

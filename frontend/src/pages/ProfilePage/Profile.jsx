@@ -8,14 +8,11 @@ import { useNavigate } from 'react-router-dom';
 function Profile({auth, setAuth, userProfile}) {
 
     const navigate = useNavigate();
-
-    useEffect(() => {
-        if (!auth) {
-        navigate("/Login");
-        }
-    }, [navigate])
-
-   
+  useEffect(() => {
+    if (!auth) {
+      navigate("/Login");
+    }
+  }, [navigate]);
     return (
         <>
            <Nav auth = {auth} setAuth = {setAuth} />

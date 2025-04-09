@@ -8,12 +8,13 @@ function Album({ auth }) {
 
   const [albums, setAlbums] = useState([]);
   const [newAlbumName, setNewAlbumName] = useState('');
+  const [showForm, setShowForm] = useState(false); 
 
   useEffect(() => {
     if (auth) {
       navigate("/Login");
     }
-  }, [navigate, auth]);
+  }, [navigate]);
 
   const handleAddAlbum = () => {
     if (newAlbumName.trim()) {
@@ -23,7 +24,7 @@ function Album({ auth }) {
       };
       setAlbums([...albums, newAlbum]);
       setNewAlbumName('');
-      document.getElementById('album-form').style.display = 'none';
+      setShowForm(false); 
     }
   };
 
@@ -39,16 +40,18 @@ function Album({ auth }) {
     <>
       <Nav />
       <div className="album-container">
-        <div id="album-form" style={{ display: 'none' }}>
-          <input
-            type="text"
-            value={newAlbumName}
-            onChange={handleAlbumNameChange}
-            placeholder="Nom de l'album"
-          />
-          <button onClick={handleAddAlbum}>Ajouter</button>
-          <button onClick={() => document.getElementById('album-form').style.display = 'none'}>Annuler</button>
-        </div>
+        {showForm && (
+          <div className="album-form">
+            <input
+              type="text"
+              value={newAlbumName}
+              onChange={handleAlbumNameChange}
+              placeholder="Nom de l'album"
+            />
+            <button onClick={handleAddAlbum}>Ajouter</button>
+            <button onClick={() => setShowForm(false)}>Annuler</button>
+          </div>
+        )}
 
         <div className="album-list">
           {albums.map((album) => (
@@ -62,10 +65,7 @@ function Album({ auth }) {
           ))}
         </div>
 
-        <button
-          className="add-album-btn"
-          onClick={() => document.getElementById('album-form').style.display = 'block'}
-        >
+        <button className="add-album-btn" onClick={() => setShowForm(true)}>
           Ajouter un album
         </button>
       </div>

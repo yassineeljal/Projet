@@ -16,7 +16,7 @@ function Login({ setAuth, auth, setUserProfile, user, setUser }) {
 const [error, setError] = useState(false);
 
 useEffect(() => {
-  if (!auth) {
+  if (auth) {
   navigate("/Profile");
   }
 }, [navigate])
