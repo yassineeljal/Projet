@@ -35,7 +35,7 @@ function HomeClient({auth, user}) {
 
     useEffect(() => {
         if (!auth) {
-        navigate("/HomeClient");
+        navigate("/");
         }
     }, [navigate])
 

@@ -1,12 +1,12 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "../../assets/picsN.png"
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
 
-function Login({ setAuth, setUserProfile, user, setUser }) {
+function Login({ setAuth, auth, setUserProfile, user, setUser }) {
 
 
   const navigate = useNavigate();
@@ -15,6 +15,11 @@ function Login({ setAuth, setUserProfile, user, setUser }) {
 
 const [error, setError] = useState(false);
 
+useEffect(() => {
+  if (!auth) {
+  navigate("/Profile");
+  }
+}, [navigate])
 
 
 
@@ -31,8 +36,9 @@ const submitLogin = async (e) => {
       if (response.data) {
           const response2 = await axios.post(`http://localhost:8888/pixios/profile/${user.username}/${user.password}`,);
           setUserProfile(response2.data)
-          setAuth(true);
-          navigate("/Profile");
+          setAuth(true)
+          localStorage.setItem("auth", "true");
+          navigate("/Profile")
           console.log("connexion reussi")
           console.log(response2.data)
 

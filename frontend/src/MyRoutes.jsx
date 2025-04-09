@@ -9,21 +9,20 @@ import Login from "./pages/LoginPage/Login"
 import Inscription from "./pages/InscriptionPage/Inscription"
 import AboutPixiosPage from './pages/AboutPage/AboutPixiosPage';
 import HomeClient from './pages/HomeClient/HomeClient';
+import ClientService from './utils/ClientService';
 function MyRoutes() {
  
-    const [auth, setAuth] = useState(false);
+    const {
+        auth,
+        setAuth,
+        userProfile,
+        setUserProfile,
+        user,
+        setUser
 
-    const [userProfile, setUserProfile] = useState({
-        username:"",
-        firstname:"",
-        lastname:""
-      });
-
-      const [user, setUser] = useState({
-        username:"",
-        password:"",
-    });
+      } = ClientService();
  
+    
  
  
     return (

@@ -1,14 +1,17 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "../../assets/picsN.png"
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
 
-function Inscription() {
+function Inscription({auth}) {
 
-  const [user, setUser] = useState({
+  const navigate = useNavigate();
+
+
+  const [newUser, setNewUser] = useState({
     email:"",
     firstname:"",
     username:"",
@@ -16,19 +19,22 @@ function Inscription() {
     password:"",
 });
 
+useEffect(() => {
+  if (!auth) {
+  navigate("/Profile");
+  }
+}, [navigate])
 
 
 
 const setAttribut = (e) => {
   const value = e.target.value;
-  setUser({...user, [e.target.name]: value})
+  setNewUser({...newUser, [e.target.name]: value})
 }
-
-const navigate = useNavigate();
 
 const submitNewUser = (e) =>{
   e.preventDefault();
-  axios.post("http://localhost:8888/pixios/createUser", user)
+  axios.post("http://localhost:8888/pixios/createUser", newUser)
       .then(() =>{
           navigate("/")
       }).catch((error) =>{
@@ -73,7 +79,7 @@ Inscrivez-vous
                   autoComplete="firstname"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   onChange={(e) => setAttribut(e)}
-                  value={user.firstname}
+                  value={newUser.firstname}
                 />
               </div>
             </div>
@@ -94,7 +100,7 @@ Nom
                   autoComplete="lastname"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   onChange={(e) => setAttribut(e)}
-                  value={user.lastname}
+                  value={newUser.lastname}
                 />
               </div>
             </div>
@@ -112,7 +118,7 @@ Nom d'utilisateur
                   autoComplete="username"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   onChange={(e) => setAttribut(e)}
-                  value={user.username}
+                  value={newUser.username}
                 />
               </div>
             </div>
@@ -130,7 +136,7 @@ Email
                   autoComplete="email"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   onChange={(e) => setAttribut(e)}
-                  value={user.email}
+                  value={newUser.email}
                 />
               </div>
             </div>
@@ -153,7 +159,7 @@ Email
                   autoComplete="current-password"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   onChange={(e) => setAttribut(e)}
-                  value={user.password}
+                  value={newUser.password}
                 />
               </div>
             </div>
