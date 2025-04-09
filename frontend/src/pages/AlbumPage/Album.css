@@ -1,0 +1,123 @@
+.album-container {
+    position: relative; /* Ajouté pour que le bouton soit positionné par rapport à ce conteneur */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px 100px;
+    background-color: #0d1117;
+    min-height: 100vh;
+    color: white;
+  }
+  
+  .add-album-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #0c3777;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 18px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .add-album-btn:hover {
+    background-color: #0e30f0;
+  }
+  
+  #album-form {
+    display: none;
+    background-color: #161b22;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    margin-top: 30px;
+    width: 300px;
+    text-align: center;
+  }
+  
+  #album-form input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border: 2px solid #444c56;
+    border-radius: 8px;
+    background-color: #0d1117;
+    color: white;
+  }
+  
+  #album-form button {
+    background-color: #238636;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  #album-form button:hover {
+    background-color: #2ea043;
+  }
+  
+  #album-form button:last-child {
+    background-color: #da3633;
+  }
+  
+  #album-form button:last-child:hover {
+    background-color: #f85149;
+  }
+  
+  .album-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+    width: 100%;
+    max-width: 1100px;
+    transition: all 0.3s ease;
+  }
+  
+  .album-item {
+    background-color: #21262d;
+    padding: 24px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  
+  .album-item:hover {
+    transform: translateY(-5px);
+    background-color: #30363d;
+  }
+  
+  .album-item h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #c9d1d9;
+  }
+  
+  .navbar {
+    background-color: #161b22;
+    padding: 10px 20px;
+    color: white;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+  }
+  
+  .navbar a:hover {
+    text-decoration: underline;
+  }
+  

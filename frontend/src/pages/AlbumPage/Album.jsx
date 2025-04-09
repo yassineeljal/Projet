@@ -1,36 +1,76 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Nav from '../../components/Navbar/Nav.jsx';
 import { useNavigate } from 'react-router-dom';
+import './Album.css';
 
+function Album({ auth }) {
+  const navigate = useNavigate();
 
-function Album({auth}) {
+  const [albums, setAlbums] = useState([]);
+  const [newAlbumName, setNewAlbumName] = useState('');
 
-    const navigate = useNavigate();
+  useEffect(() => {
+    if (auth) {
+      navigate("/Login");
+    }
+  }, [navigate, auth]);
 
+  const handleAddAlbum = () => {
+    if (newAlbumName.trim()) {
+      const newAlbum = {
+        id: Date.now(),
+        name: newAlbumName,
+      };
+      setAlbums([...albums, newAlbum]);
+      setNewAlbumName('');
+      document.getElementById('album-form').style.display = 'none';
+    }
+  };
 
-    useEffect(() => {
-        if (auth) {
-        navigate("/Login");
-        }
-    }, [navigate])
+  const handleAlbumNameChange = (e) => {
+    setNewAlbumName(e.target.value);
+  };
 
-    return (
-        <>
-        <Nav />
-             <div className="grid grid-cols-4 gap-12  " style={{paddingBottom:"100px", paddingLeft:"20px"}}>
-  {image.slice(0, 8).map((carte, i) => (
-    <div
-      key={i}
-      className="w-64 h-80 flex justify-center items-center rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105"
-    >
-      <img src={carte.urls.full} className="w-full h-full object-cover" />
-    </div>
-  ))}
-</div>
+  const handleAlbumClick = (albumId) => {
+    navigate(`/album/${albumId}`);
+  };
 
-        
-        </>
-    );
+  return (
+    <>
+      <Nav />
+      <div className="album-container">
+        <div id="album-form" style={{ display: 'none' }}>
+          <input
+            type="text"
+            value={newAlbumName}
+            onChange={handleAlbumNameChange}
+            placeholder="Nom de l'album"
+          />
+          <button onClick={handleAddAlbum}>Ajouter</button>
+          <button onClick={() => document.getElementById('album-form').style.display = 'none'}>Annuler</button>
+        </div>
+
+        <div className="album-list">
+          {albums.map((album) => (
+            <div
+              key={album.id}
+              className="album-item"
+              onClick={() => handleAlbumClick(album.id)}
+            >
+              <h3>{album.name}</h3>
+            </div>
+          ))}
+        </div>
+
+        <button
+          className="add-album-btn"
+          onClick={() => document.getElementById('album-form').style.display = 'block'}
+        >
+          Ajouter un album
+        </button>
+      </div>
+    </>
+  );
 }
 
 export default Album;
