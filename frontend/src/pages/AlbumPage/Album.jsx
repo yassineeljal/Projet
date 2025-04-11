@@ -11,10 +11,12 @@ function Album({ auth }) {
   const [showForm, setShowForm] = useState(false); 
 
   useEffect(() => {
-    if (auth) {
+    if (!auth) {
       navigate("/Login");
     }
-  }, [navigate]);
+  }, [auth, navigate]);
+  
+
 
   const handleAddAlbum = () => {
     if (newAlbumName.trim()) {

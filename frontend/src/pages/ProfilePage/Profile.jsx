@@ -11,8 +11,9 @@ function Profile({auth, setAuth, userProfile}) {
   useEffect(() => {
     if (!auth) {
       navigate("/Login");
+      
     }
-  }, [navigate]);
+  }, [auth, navigate]);
     return (
         <>
            <Nav auth = {auth} setAuth = {setAuth} />
