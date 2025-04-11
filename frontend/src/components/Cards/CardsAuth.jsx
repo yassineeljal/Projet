@@ -8,24 +8,24 @@ import axios from "axios";
 
 function CardsAuth({image,user}){
 
-  
+
 
 
   const setImageinLike = async (src, e) => {
     e.preventDefault();
     try{
       console.log(src)
-      const response = await axios.post(`http://localhost:8888/pixios/addImageLike/${user.username}/${user.password}/${src}`,);
+      const response = await axios.post(`http://localhost:8888/pixios/addImageLike/${user.username}/${src}`,);
       if(response.data){
         console.log("Image envoyée")
       }
       else{
-        console.log("image a eu un preobleme")
+        console.log("image a eu un probleme")
       }
     }
     catch (err) {
       console.error("Post fail", err);
-      setError(true);
+
   }
   }
 
@@ -34,20 +34,18 @@ function CardsAuth({image,user}){
     e.preventDefault();
     try{
       console.log(src)
-      console.log(user.username)
-      console.log(user.password)
+      console.log(localStorage.getItem("username"))
 
-      const response = await axios.post(`http://localhost:8888/pixios/addImageAlbum/${user.username}/${user.password}/${src}`,);
+      const response = await axios.post(`http://localhost:8888/pixios/addImageAlbum/${localStorage.getItem("username")}/${src}`);
       if(response.data){
         console.log("Image envoyée")
       }
       else{
-        console.log("image a eu un preobleme")
+        console.log("image a eu un probleme")
       }
     }
     catch (err) {
       console.error("Post fail", err);
-      setError(true);
   }
   }
 
