@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Nav from '../../components/Navbar/Nav.jsx';
 import { useNavigate } from 'react-router-dom';
 import './Album.css';
+import axios from 'axios';
 
 function Album({ auth }) {
   const navigate = useNavigate();
 
   const [albums, setAlbums] = useState([]);
-  const [newAlbumName, setNewAlbumName] = useState({
-    id:"",
-    name:"",
-  });
+  const [newAlbumName, setNewAlbumName] = useState(newAlbumName);
   const [showForm, setShowForm] = useState(false); 
 
   useEffect(() => {
@@ -20,15 +18,16 @@ function Album({ auth }) {
   }, [auth, navigate]);
   
 
-  const submitNewAlbum = (e) =>{
+  const submitNewAlbum = async (e) =>{
     e.preventDefault();
-    axios.post("http://localhost:8888/pixios/createAlbum", newAlbumName)
-        .then(() =>{
-          setShowForm(false); 
-          navigate(`/Album`);
-        }).catch((error) =>{
-        console.log(error);
-    });
+    try{
+      const response = await axios.post(`http://localhost:8888/album/createAlbum/${localStorage.getItem("username")}/${newAlbumName}`,);
+      if(response.data){
+        setShowForm(false); 
+            navigate(`/Album`);
+      }}catch (err) {
+        console.error("Login failed", err);
+  };
     
   }
 
