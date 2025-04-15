@@ -7,36 +7,36 @@ function Album({ auth }) {
   const navigate = useNavigate();
 
   const [albums, setAlbums] = useState([]);
-  const [newAlbumName, setNewAlbumName] = useState('');
+  const [newAlbumName, setNewAlbumName] = useState({
+    id:"",
+    name:"",
+  });
   const [showForm, setShowForm] = useState(false); 
 
   useEffect(() => {
-    if (!auth) {
+    if (auth) {
       navigate("/Login");
     }
   }, [auth, navigate]);
   
 
+  const submitNewAlbum = (e) =>{
+    e.preventDefault();
+    axios.post("http://localhost:8888/pixios/createAlbum", newAlbumName)
+        .then(() =>{
+          setShowForm(false); 
+          navigate(`/Album`);
+        }).catch((error) =>{
+        console.log(error);
+    });
+    
+  }
 
-  const handleAddAlbum = () => {
-    if (newAlbumName.trim()) {
-      const newAlbum = {
-        id: Date.now(),
-        name: newAlbumName,
-      };
-      setAlbums([...albums, newAlbum]);
-      setNewAlbumName('');
-      setShowForm(false); 
-    }
-  };
+  const setAttribut = (e) => {
+    const value = e.target.value;
+    setNewAlbumName({...newAlbumName, [e.target.name]: value})
+  }
 
-  const handleAlbumNameChange = (e) => {
-    setNewAlbumName(e.target.value);
-  };
-
-  const handleAlbumClick = (albumId) => {
-    navigate(`/album/${albumId}`);
-  };
 
   return (
     <>
@@ -46,11 +46,11 @@ function Album({ auth }) {
           <div className="album-form">
             <input
               type="text"
-              value={newAlbumName}
-              onChange={handleAlbumNameChange}
+              value={newAlbumName.name}
+              onChange={(e) => setAttribut(e)}
               placeholder="Nom de l'album"
             />
-            <button onClick={handleAddAlbum}>Ajouter</button>
+            <button onClick={(e) => submitNewAlbum(e)}>Ajouter</button>
             <button onClick={() => setShowForm(false)}>Annuler</button>
           </div>
         )}
@@ -60,7 +60,6 @@ function Album({ auth }) {
             <div
               key={album.id}
               className="album-item"
-              onClick={() => handleAlbumClick(album.id)}
             >
               <h3>{album.name}</h3>
             </div>
