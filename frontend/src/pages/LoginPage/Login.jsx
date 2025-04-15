@@ -31,6 +31,7 @@ const setAttribut = (e) => {
 const submitLogin = async (e) => {
   e.preventDefault();
   try {
+    console.log(user.username)
       const response = await axios.post(`http://localhost:8888/pixios/login/${user.username}/${user.password}`,);
       if (response.data) {
           const response2 = await axios.post(`http://localhost:8888/pixios/profile/${user.username}/${user.password}`,);

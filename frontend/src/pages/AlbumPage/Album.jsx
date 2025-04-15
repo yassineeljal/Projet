@@ -8,34 +8,33 @@ function Album({ auth }) {
   const navigate = useNavigate();
 
   const [albums, setAlbums] = useState([]);
-  const [newAlbumName, setNewAlbumName] = useState(newAlbumName);
-  const [showForm, setShowForm] = useState(false); 
+  const [newAlbumName, setNewAlbumName] = useState('');
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
-    if (auth) {
+    if (!auth) {
       navigate("/Login");
     }
   }, [auth, navigate]);
-  
 
-  const submitNewAlbum = async (e) =>{
+  const submitNewAlbum = async (e) => {
     e.preventDefault();
-    try{
-      const response = await axios.post(`http://localhost:8888/album/createAlbum/${localStorage.getItem("username")}/${newAlbumName}`,);
-      if(response.data){
-        setShowForm(false); 
-            navigate(`/Album`);
-      }}catch (err) {
-        console.error("Login failed", err);
+    try {
+      const username = localStorage.getItem("username");
+      const response = await axios.post(`http://localhost:8888/album/createAlbum/${username}/${newAlbumName}`);
+      if (response.data) {
+        setNewAlbumName('');
+        setShowForm(false);
+        navigate(`/Album`);
+      }
+    } catch (err) {
+      console.error("Erreur lors de la création de l'album", err);
+    }
   };
-    
-  }
 
   const setAttribut = (e) => {
-    const value = e.target.value;
-    setNewAlbumName({...newAlbumName, [e.target.name]: value})
-  }
-
+    setNewAlbumName(e.target.value);
+  };
 
   return (
     <>
@@ -45,11 +44,11 @@ function Album({ auth }) {
           <div className="album-form">
             <input
               type="text"
-              value={newAlbumName.name}
-              onChange={(e) => setAttribut(e)}
+              value={newAlbumName}
+              onChange={setAttribut}
               placeholder="Nom de l'album"
             />
-            <button onClick={(e) => submitNewAlbum(e)}>Ajouter</button>
+            <button onClick={submitNewAlbum}>Ajouter</button>
             <button onClick={() => setShowForm(false)}>Annuler</button>
           </div>
         )}

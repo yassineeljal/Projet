@@ -21,13 +21,14 @@ function classNames(...classes) {
 }
 
 
-function Nav({auth, setAuth}) {
+function Nav() {
 
   const navigate = useNavigate();
 
   const logout = () => {
-    navigate("/")
-    setAuth(false)
+    localStorage.removeItem("auth")
+      navigate("/");
+      window.location.reload();
 
   }
 

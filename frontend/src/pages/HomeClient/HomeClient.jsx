@@ -34,7 +34,7 @@ function HomeClient({auth, user}) {
 
 
     useEffect(() => {
-        if (auth) {
+        if (!auth) {
         navigate("/");
         }
     }, [navigate])
