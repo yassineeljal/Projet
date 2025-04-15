@@ -11,10 +11,24 @@ function Album({ auth }) {
   const [newAlbumName, setNewAlbumName] = useState('');
   const [showForm, setShowForm] = useState(false);
 
+
+      const fetchAlbum = async () => {
+          try {
+          const username = localStorage.getItem("username");
+          const response = await axios.post(`http://localhost:8888/album/getAllAlbum/${username}`);
+          setAlbums(response.data);
+          console.log(response.data)
+          } catch (error) {
+          console.error("Error fetching album:", error);
+          }
+      };
+      
+
   useEffect(() => {
     if (!auth) {
       navigate("/Login");
     }
+    fetchAlbum()
   }, [auth, navigate]);
 
   const submitNewAlbum = async (e) => {
@@ -25,7 +39,7 @@ function Album({ auth }) {
       if (response.data) {
         setNewAlbumName('');
         setShowForm(false);
-        navigate(`/Album`);
+        window.location.reload();
       }
     } catch (err) {
       console.error("Erreur lors de la création de l'album", err);
