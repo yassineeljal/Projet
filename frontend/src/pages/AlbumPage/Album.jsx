@@ -12,17 +12,17 @@ function Album({ auth }) {
   const [showForm, setShowForm] = useState(false);
 
 
-      const fetchAlbum = async () => {
-          try {
-          const username = localStorage.getItem("username");
-          const response = await axios.post(`http://localhost:8888/album/getAllAlbum/${username}`);
-          setAlbums(response.data);
-          console.log(response.data)
-          } catch (error) {
-          console.error("Error fetching album:", error);
-          }
-      };
-      
+  const fetchAlbum = async () => {
+    try {
+      const username = localStorage.getItem("username");
+      const response = await axios.post(`http://localhost:8888/album/getAllAlbum/${username}`);
+      setAlbums(response.data);
+      console.log(response.data)
+    } catch (error) {
+      console.error("Error fetching album:", error);
+    }
+  };
+
 
   useEffect(() => {
     if (!auth) {
@@ -68,14 +68,15 @@ function Album({ auth }) {
         )}
 
         <div className="album-list">
-          {albums.map((album) => (
+          {albums.map((album, index) => (
             <div
-              key={album.id}
+              key={album.id || index}
               className="album-item"
             >
               <h3>{album.name}</h3>
             </div>
           ))}
+
         </div>
 
         <button className="add-album-btn" onClick={() => setShowForm(true)}>

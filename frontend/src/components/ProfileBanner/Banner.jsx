@@ -26,14 +26,15 @@ function Banner({ userProfile }) {
 
   const triggerFileInput = () => {
     fileInputRef.current.value = null; // Réinitialise la valeur pour que le même fichier puisse être sélectionné plusieurs fois
-    fileInputRef.current.click(); // Ouvre le sélecteur de fichiers
+    fileInputRef.current.click(); 
   };
+
+  
 
   return (
     <div className="relative w-full h-56 bg-gradient-to-r from-blue-500 to-purple-600 text-white flex items-center justify-center shadow-lg overflow-hidden">
       <div className="absolute inset-0 bg-black bg-opacity-30"></div>
       <div className="relative flex items-center space-x-6">
-        {/* Input caché pour uploader l'image */}
         <input
           type="file"
           ref={fileInputRef}

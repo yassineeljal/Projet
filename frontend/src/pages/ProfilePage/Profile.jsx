@@ -25,9 +25,3 @@ function Profile({auth, setAuth, userProfile}) {
 
 export default Profile;
 
-/**
- *  if (!auth) {
-        window.location.href="/Login";
-        return null;
-    }
- */
