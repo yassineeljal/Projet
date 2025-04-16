@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FaFacebook, FaTwitter, FaInstagram, FaEdit } from "react-icons/fa";
 import profilePic from '../../assets/profil.avif'; 
 
-function Banner({ userProfile }) {
+function Banner({ }) {
   const [profileImage, setProfileImage] = useState(localStorage.getItem('profileImage') || profilePic);
   
   const fileInputRef = useRef(null);
@@ -43,7 +43,6 @@ function Banner({ userProfile }) {
           onChange={handleImageChange}
         />
 
-        {/* Image de profil cliquable */}
         <div className="relative group">
           <img
             src={profileImage}
@@ -51,26 +50,24 @@ function Banner({ userProfile }) {
             className="w-24 h-24 rounded-full border-4 border-white shadow-md cursor-pointer transition duration-300 group-hover:brightness-50"
             onClick={triggerFileInput}
           />
-          {/* Icône d'édition, visible au survol */}
-          <FaEdit className="absolute inset-0 m-auto text-3xl text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
+         
         </div>
 
         {/* Infos utilisateur */}
         <div>
           <h2 className="text-2xl font-semibold mr-5">
-            {userProfile.username}
+            {localStorage.getItem("username")}
           </h2>
           <div className="mt-2 flex space-x-3">
-            <a href="*" className="text-white hover:text-gray-300">
+            <a href="https://www.facebook.com/" className="text-white hover:text-gray-300">
               <FaFacebook size={20} />
             </a>
-            <a href="*" className="text-white hover:text-gray-300">
+            <a href="https://x.com/" className="text-white hover:text-gray-300">
               <FaTwitter size={20} />
             </a>
-            <a href="*" className="text-white hover:text-gray-300">
+            <a href="https://www.instagram.com/" className="text-white hover:text-gray-300">
               <FaInstagram size={20} />
             </a>
-            <FaEdit className="text-xl text-white cursor-pointer hover:text-gray-300" />
           </div>
         </div>
       </div>

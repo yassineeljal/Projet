@@ -5,11 +5,7 @@ function ClientService() {
   const [auth, setAuth] = useState(false);
   const [authReady, setAuthReady] = useState(false); 
 
-  const [userProfile, setUserProfile] = useState({
-    username: "",
-    firstname: "",
-    lastname: ""
-  });
+
 
   const [user, setUser] = useState({
     username: "",
@@ -32,8 +28,6 @@ function ClientService() {
     auth,
     setAuth,
     authReady, 
-    userProfile,
-    setUserProfile,
     user,
     setUser
   };

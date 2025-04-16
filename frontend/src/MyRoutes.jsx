@@ -16,8 +16,6 @@ function MyRoutes() {
     auth,
     setAuth,
     authReady, 
-    userProfile,
-    setUserProfile,
     user,
     setUser
   } = ClientService();
@@ -31,8 +29,8 @@ function MyRoutes() {
       <Routes>
         <Route path='/' element={<Home auth={auth} />} />
         <Route path='/HomeClient' element={<HomeClient auth={auth} user={user} />} />
-        <Route path='/Login' element={<Login auth={auth} setAuth={setAuth} setUserProfile={setUserProfile} user={user} setUser={setUser} />} />
-        <Route path='/Profile' element={<Profile auth={auth} setAuth={setAuth} userProfile={userProfile} />} />
+        <Route path='/Login' element={<Login auth={auth} setAuth={setAuth} user={user} setUser={setUser} />} />
+        <Route path='/Profile' element={<Profile auth={auth} setAuth={setAuth} />} />
         <Route path='/Inscription' element={<Inscription auth={auth} setAuth={setAuth} />} />
         <Route path='/Album' element={<Album auth={auth} />} />
         <Route path='/Liked' element={<Liked auth={auth} />} />

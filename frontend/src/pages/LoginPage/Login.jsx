@@ -6,7 +6,7 @@ import axios from "axios";
 
 
 
-function Login({ setAuth, auth, setUserProfile, user, setUser }) {
+function Login({ setAuth, auth, user, setUser }) {
 
 
   const navigate = useNavigate();
@@ -34,8 +34,6 @@ const submitLogin = async (e) => {
     console.log(user.username)
       const response = await axios.post(`http://localhost:8888/pixios/login/${user.username}/${user.password}`,);
       if (response.data) {
-          const response2 = await axios.post(`http://localhost:8888/pixios/profile/${user.username}/${user.password}`,);
-          setUserProfile(response2.data)
           setAuth(true)
           localStorage.setItem("username", user.username)
           localStorage.setItem("auth", "true");

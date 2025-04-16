@@ -8,7 +8,6 @@ function CardsAuth({ image, user }) {
   const [albums, setAlbumms] = useState([])
 
 
-  
 
   const handleAlbumIconClick = (src, e) => {
     e.preventDefault();
