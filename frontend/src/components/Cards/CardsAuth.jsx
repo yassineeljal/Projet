@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./CardsAuth.css";
 import AlbumIcon from "../../assets/album.png";
 import LikeIcon from "../../assets/like.png";
 
 function CardsAuth({ image, user }) {
   const [showAlbums, setShowAlbums] = useState(false);
-  const [albums, setAlbumms] = useState([])
+  const [albums, setAlbums] = useState([])
 
 
-  
+
+  const fetchAlbum = async () => {
+    try {
+      const username = localStorage.getItem("username");
+      const response = await axios.post(`http://localhost:8888/album/getAllAlbum/${username}`);
+      setAlbums(response.data);
+      console.log(response.data)
+    } catch (error) {
+      console.error("Error fetching album:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchAlbum()
+  }, []);
 
   const handleAlbumIconClick = (src, e) => {
     e.preventDefault();
