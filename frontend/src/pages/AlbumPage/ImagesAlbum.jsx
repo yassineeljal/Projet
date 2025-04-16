@@ -13,7 +13,7 @@ function ImagesAlbum({selectedAlbum}) {
   const fetchImagesAlbum = async () => {
     try {
       const response = await axios.post(`http://localhost:8888/image/getImageInAlbum/${selectedAlbum}`);
-      setAlbums(response.data);
+      setImages(response.data);
       console.log(response.data)
     } catch (error) {
       console.error("Error fetching album:", error);
