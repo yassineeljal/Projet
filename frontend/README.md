@@ -7,6 +7,10 @@
 - npm install react-icons
 - npm i react-bootstrap
 - npm install react-photo-album
+- npm install @emotion/react @emotion/styled
+- npm install @mui/material
+
+
 
 # Outils utilisés:
 - https://www.youtube.com/watch?v=0YoT44j3Jg4&t=1242s

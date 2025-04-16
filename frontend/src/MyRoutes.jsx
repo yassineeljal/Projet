@@ -10,6 +10,8 @@ import Inscription from "./pages/InscriptionPage/Inscription";
 import AboutPixiosPage from './pages/AboutPage/AboutPixiosPage';
 import HomeClient from './pages/HomeClient/HomeClient';
 import ClientService from './utils/ClientService';
+import ImagesAlbum from './pages/AlbumPage/ImagesAlbum';
+import ImageLiked from './pages/LikedPage/ImageLiked';
 
 function MyRoutes() {
   const {
@@ -17,7 +19,9 @@ function MyRoutes() {
     setAuth,
     authReady, 
     user,
-    setUser
+    setUser,
+    selectedAlbum,
+    setSelectedAlbum
   } = ClientService();
 
   if (!authReady) {
@@ -32,10 +36,13 @@ function MyRoutes() {
         <Route path='/Login' element={<Login auth={auth} setAuth={setAuth} user={user} setUser={setUser} />} />
         <Route path='/Profile' element={<Profile auth={auth} setAuth={setAuth} />} />
         <Route path='/Inscription' element={<Inscription auth={auth} setAuth={setAuth} />} />
-        <Route path='/Album' element={<Album auth={auth} />} />
+        <Route path='/Album' element={<Album auth={auth} setSelectedAlbum = {setSelectedAlbum} />} />
         <Route path='/Liked' element={<Liked auth={auth} />} />
         <Route path='/AboutPixiosPage' element={<AboutPixiosPage />} />
+        <Route path='/ImagesAlbum' element={<ImagesAlbum selectedAlbum = {selectedAlbum} />} />
+        <Route path='/ImagesLiked' element={<ImageLiked/>} />
         <Route path='*' element={<NotFound />} />
+        
       </Routes>
     </BrowserRouter>
   );

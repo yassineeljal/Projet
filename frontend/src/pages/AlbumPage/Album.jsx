@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './Album.css';
 import axios from 'axios';
 
-function Album({ auth }) {
+function Album({ auth, setSelectedAlbum }) {
   const navigate = useNavigate();
 
   const [albums, setAlbums] = useState([]);
@@ -50,6 +50,13 @@ function Album({ auth }) {
     setNewAlbumName(e.target.value);
   };
 
+  const openAlbum = (name, e) => {
+    e.preventDefault();
+    setSelectedAlbum(name)
+    navigate("/ImagesAlbum");
+
+  };
+
   return (
     <>
       <Nav />
@@ -68,10 +75,11 @@ function Album({ auth }) {
         )}
 
         <div className="album-list">
-          {albums.map((album, index) => (
+          {albums.map((album) => (
             <div
-              key={album.id || index}
+              key={album.id}
               className="album-item"
+              onClick={(e) => openAlbum(album.name, e)}
             >
               <h3>{album.name}</h3>
             </div>

@@ -4,6 +4,8 @@ function ClientService() {
 
   const [auth, setAuth] = useState(false);
   const [authReady, setAuthReady] = useState(false); 
+  const [selectedAlbum, setSelectedAlbum] = useState("")
+
 
 
 
@@ -29,7 +31,9 @@ function ClientService() {
     setAuth,
     authReady, 
     user,
-    setUser
+    setUser,
+    selectedAlbum,
+    setSelectedAlbum
   };
 }
 
