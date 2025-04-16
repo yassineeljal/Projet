@@ -4,10 +4,14 @@ import AlbumIcon from "../../assets/album.png";
 import LikeIcon from "../../assets/like.png";
 import axios from 'axios';
 
-function CardsAuth({ image, user }) {
+function CardsAuth({ image }) {
   const [showAlbums, setShowAlbums] = useState(false);
   const [albums, setAlbums] = useState([])
-  const [imageURL, setImageURL] = useState("")
+  const [imageUrl, setImageUrl] = useState("")
+  const [bidon, setBidon] = useState({
+    url:"",
+    id:""
+})
 
 
 
@@ -23,15 +27,15 @@ function CardsAuth({ image, user }) {
   };
 
 
-  // encoder url : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent?utm_source=chatgpt.com
-  const addImageToAlbum = async (id, url) => {
+  // https://mkyong.com/spring-mvc/spring-requestbody-annotation/
+  const addImageToAlbum = async (id) => {
+    setBidon({ url: imageUrl, id: id  })
+
     try{
-      console.log(url)
-      console.log(id)
-      const response = await axios.post(`http://localhost:8888/image/addImageToAlbum/${encodeURIComponent(url)}/${id}`);
+      console.log(bidon)
+      const response = await axios.post(`http://localhost:8888/image/addImageToAlbum`, bidon);
       if(response.data){
         console.log("ajout reussi")
-        setImageURL("")
       }
     } catch(error) {
       console.error("Error add image:", error);
@@ -41,7 +45,7 @@ function CardsAuth({ image, user }) {
   const handleAlbumIconClick = (src, e) => {
     e.preventDefault();
     fetchAlbum()
-    setImageURL(src)
+    setImageUrl(src)
     setShowAlbums(true);
   };
 
@@ -100,7 +104,7 @@ function CardsAuth({ image, user }) {
             ) : (
               <ul className="album-list">
                 {albums.map((album, i) => (
-                  <li key={album.id || i} className="album-list-item" onClick={(e) => addImageToAlbum(i + 1, imageURL)}>
+                  <li key={i} className="album-list-item" onClick={(e) => addImageToAlbum(i + 1)}>
                     {album.name}
                   </li>
                 ))}
