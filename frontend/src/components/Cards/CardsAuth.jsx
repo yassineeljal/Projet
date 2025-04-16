@@ -5,11 +5,10 @@ import LikeIcon from "../../assets/like.png";
 
 function CardsAuth({ image, user }) {
   const [showAlbums, setShowAlbums] = useState(false);
+  const [albums, setAlbumms] = useState([])
 
-  const albums = [
-    { id: 1, name: "Album de Vacances" },
-    { id: 2, name: "Portfolio" },
-  ];
+
+  
 
   const handleAlbumIconClick = (src, e) => {
     e.preventDefault();
