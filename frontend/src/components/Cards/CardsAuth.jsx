@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./CardsAuth.css";
 import AlbumIcon from "../../assets/album.png";
 import LikeIcon from "../../assets/like.png";
+import axios from 'axios';
 
 function CardsAuth({ image, user }) {
   const [showAlbums, setShowAlbums] = useState(false);
   const [albums, setAlbums] = useState([])
+  const [imageURL, setImageURL] = useState("")
 
 
 
@@ -20,12 +22,26 @@ function CardsAuth({ image, user }) {
     }
   };
 
-  useEffect(() => {
-    fetchAlbum()
-  }, []);
+
+  // encoder url : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent?utm_source=chatgpt.com
+  const addImageToAlbum = async (id, url) => {
+    try{
+      console.log(url)
+      console.log(id)
+      const response = await axios.post(`http://localhost:8888/image/addImageToAlbum/${encodeURIComponent(url)}/${id}`);
+      if(response.data){
+        console.log("ajout reussi")
+        setImageURL("")
+      }
+    } catch(error) {
+      console.error("Error add image:", error);
+    }
+  }
 
   const handleAlbumIconClick = (src, e) => {
     e.preventDefault();
+    fetchAlbum()
+    setImageURL(src)
     setShowAlbums(true);
   };
 
@@ -83,8 +99,8 @@ function CardsAuth({ image, user }) {
               <p>Aucun album disponible.</p>
             ) : (
               <ul className="album-list">
-                {albums.map((album) => (
-                  <li key={album.id} className="album-list-item">
+                {albums.map((album, i) => (
+                  <li key={album.id || i} className="album-list-item" onClick={(e) => addImageToAlbum(i + 1, imageURL)}>
                     {album.name}
                   </li>
                 ))}

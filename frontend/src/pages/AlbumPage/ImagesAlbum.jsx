@@ -29,11 +29,11 @@ function ImagesAlbum({selectedAlbum}) {
     return (
         <Box sx={{ width: 500, height: 450, overflowY: 'scroll' }}>
           <ImageList variant="masonry" cols={3} gap={8}>
-            {images.map((images, i) => (
+            {images.map((image, i) => (
               <ImageListItem key={i}>
                 <img
-                  srcSet={`${images}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                  src={`${images}?w=248&fit=crop&auto=format`}
+                  srcSet={`${image}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                  src={`${image}?w=248&fit=crop&auto=format`}
                   alt="image"
                   loading="lazy"
                 />
