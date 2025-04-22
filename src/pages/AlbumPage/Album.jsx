@@ -17,7 +17,6 @@ function Album({ auth, setSelectedAlbum }) {
       const username = localStorage.getItem("username");
       const response = await axios.post(`http://localhost:8888/album/getAllAlbum/${username}`);
       setAlbums(response.data);
-      console.log(response.data)
     } catch (error) {
       console.error("Error fetching album:", error);
     }
@@ -75,9 +74,9 @@ function Album({ auth, setSelectedAlbum }) {
         )}
 
         <div className="album-list">
-          {albums.map((album) => (
+          {albums.map((album,i) => (
             <div
-              key={album.id}
+              key={album.id || i}
               className="album-item"
               onClick={(e) => openAlbum(album.name, e)}
             >
