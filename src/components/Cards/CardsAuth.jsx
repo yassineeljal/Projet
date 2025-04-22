@@ -45,6 +45,20 @@ function CardsAuth({ image }) {
     setShowAlbums(true);
   };
 
+  const addImageToLiked = async (src) => {
+    const picture = { url: src, username: localStorage.getItem("username") }
+    console.log(picture)
+    try{
+      const response = await axios.post(`http://localhost:8888/image/addImageToLiked`, picture);
+      if(response.data){
+        console.log("ajout reussi")
+      }
+    } catch(error) {
+      console.error("Error add image:", error);
+    }
+  }
+
+
   const closeModal = () => {
     setShowAlbums(false);
   };
@@ -73,7 +87,7 @@ function CardsAuth({ image }) {
               src={LikeIcon}
               alt="Like"
               id="like"
-              onClick={() => console.log("Clique sur le Like")}
+              onClick={() => addImageToLiked(carte.urls.full)}
             />
 
             <img

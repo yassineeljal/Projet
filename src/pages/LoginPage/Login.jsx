@@ -39,7 +39,6 @@ const submitLogin = async (e) => {
           localStorage.setItem("auth", "true");
           navigate("/Profile")
           console.log("connexion reussi")
-          console.log(response2.data)
 
       } else {
           setError(true);
