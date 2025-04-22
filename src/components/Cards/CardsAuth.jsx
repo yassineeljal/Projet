@@ -8,10 +8,7 @@ function CardsAuth({ image }) {
   const [showAlbums, setShowAlbums] = useState(false);
   const [albums, setAlbums] = useState([])
   const [imageUrl, setImageUrl] = useState("")
-  const [bidon, setBidon] = useState({
-    url:"",
-    id:""
-})
+
 
 
 
@@ -27,13 +24,12 @@ function CardsAuth({ image }) {
   };
 
 
+
   // https://mkyong.com/spring-mvc/spring-requestbody-annotation/
   const addImageToAlbum = async (id) => {
-    setBidon({ url: imageUrl, id: id  })
-
+    const picture = { url: imageUrl, id: id }
     try{
-      console.log(bidon)
-      const response = await axios.post(`http://localhost:8888/image/addImageToAlbum`, bidon);
+      const response = await axios.post(`http://localhost:8888/image/addImageToAlbum`, picture);
       if(response.data){
         console.log("ajout reussi")
       }
