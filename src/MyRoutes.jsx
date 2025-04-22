@@ -11,7 +11,6 @@ import AboutPixiosPage from './pages/AboutPage/AboutPixiosPage';
 import HomeClient from './pages/HomeClient/HomeClient';
 import ClientService from './utils/ClientService';
 import ImagesAlbum from './pages/AlbumPage/ImagesAlbum';
-import ImageLiked from './pages/LikedPage/ImageLiked';
 
 function MyRoutes() {
   const {
@@ -40,7 +39,6 @@ function MyRoutes() {
         <Route path='/Liked' element={<Liked auth={auth} />} />
         <Route path='/AboutPixiosPage' element={<AboutPixiosPage />} />
         <Route path='/ImagesAlbum' element={<ImagesAlbum selectedAlbum = {selectedAlbum} />} />
-        <Route path='/ImagesLiked' element={<ImageLiked/>} />
         <Route path='*' element={<NotFound />} />
         
       </Routes>

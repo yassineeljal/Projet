@@ -79,6 +79,7 @@ function Album({ auth, setSelectedAlbum }) {
               key={album.id || i}
               className="album-item"
               onClick={(e) => openAlbum(album.name, e)}
+
             >
               <h3>{album.name}</h3>
             </div>

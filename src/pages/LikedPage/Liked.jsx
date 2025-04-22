@@ -3,10 +3,13 @@ import Nav from '../../components/Navbar/Nav.jsx';
 import { useNavigate } from 'react-router-dom';
 import './Liked.css';
 import axios from 'axios';
+import Box from '@mui/material/Box';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 
 function Liked({ auth, user }) {
   const navigate = useNavigate();
-  const [likedImages, setLikedImages] = useState([]);
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     if (!auth) {
@@ -15,37 +18,55 @@ function Liked({ auth, user }) {
   }, [auth, navigate]);
 
   useEffect(() => {
-    const fetchLikedImages = async () => {
+    const fetchImagesLiked = async () => {
       try {
-        const response = await axios.get(`http://localhost:8888/pixios/getLikedImages/${user.username}/${user.password}`);
-        if (response.data) {
-          setLikedImages(response.data);
-        }
+          const response = await axios.post(`http://localhost:8888/image/getImageInLiked/${localStorage.getItem("username")}`);
+          setImages(response.data);
+          console.log(response.data);
       } catch (error) {
-        console.error("Erreur lors de la récupération des images likées :", error);
+          console.error("Error fetching Liked:", error);
       }
-    };
+  };
 
     if (auth) {
-      fetchLikedImages();
+      fetchImagesLiked();
     }
   }, [auth, user]);
 
   return (
     <>
-      <Nav />
-      <div className="liked-container">
-        <h2>Mes images likées</h2>
-        <div className="grid grid-cols-3 gap-12" style={{ padding: "20px" }}>
-          {likedImages.map((img, index) => (
-            <div key={index} className="w-64 h-80 rounded-lg overflow-hidden shadow-md">
-              <img src={img} alt={`liked-${index}`} className="w-full h-full object-cover" />
-            </div>
-          ))}
-        </div>
-      </div>
+    <Nav />
+    <Box
+        sx={{
+            width: '100%',         
+            height: '100vh',       
+            overflowY: 'auto',     
+            p: 2,                  
+            paddingBottom: '80px', 
+        }}
+    >
+        <ImageList variant="masonry" cols={3} gap={16}>
+            {images.map((image, i) => (
+                <ImageListItem key={i}>
+                    <img
+                        srcSet={`${image.url}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                        src={`${image.url}?w=248&fit=crop&auto=format`}
+                        alt={`image-${i}`}
+                        loading="lazy"
+                        style={{
+                            width: '100%',
+                            height: '200px',
+                            objectFit: 'cover', 
+                            display: 'block',
+                            
+                        }}
+                    />
+                </ImageListItem>
+            ))}
+        </ImageList>
+    </Box>
     </>
-  );
+);
 }
 
 export default Liked;

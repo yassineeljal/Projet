@@ -32,6 +32,7 @@ function CardsAuth({ image }) {
       const response = await axios.post(`http://localhost:8888/image/addImageToAlbum`, picture);
       if(response.data){
         console.log("ajout reussi")
+        setShowAlbums(false);
       }
     } catch(error) {
       console.error("Error add image:", error);
