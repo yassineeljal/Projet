@@ -5,8 +5,8 @@ import './Album.css';
 import axios from 'axios';
 
 function Album({ auth, setSelectedAlbum }) {
+  
   const navigate = useNavigate();
-
   const [albums, setAlbums] = useState([]);
   const [newAlbumName, setNewAlbumName] = useState('');
   const [showForm, setShowForm] = useState(false);
