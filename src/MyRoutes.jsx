@@ -16,7 +16,7 @@ function MyRoutes() {
   const {
     auth,
     setAuth,
-    authReady, 
+    authReady,
     user,
     setUser,
     selectedAlbum,
@@ -35,12 +35,11 @@ function MyRoutes() {
         <Route path='/Login' element={<Login auth={auth} setAuth={setAuth} user={user} setUser={setUser} />} />
         <Route path='/Profile' element={<Profile auth={auth} setAuth={setAuth} />} />
         <Route path='/Inscription' element={<Inscription auth={auth} setAuth={setAuth} />} />
-        <Route path='/Album' element={<Album auth={auth} setSelectedAlbum = {setSelectedAlbum} />} />
+        <Route path='/Album' element={<Album auth={auth} setSelectedAlbum={setSelectedAlbum} />} />
         <Route path='/Liked' element={<Liked auth={auth} />} />
         <Route path='/AboutPixiosPage' element={<AboutPixiosPage />} />
-        <Route path='/ImagesAlbum' element={<ImagesAlbum selectedAlbum = {selectedAlbum} />} />
+        <Route path='/ImagesAlbum' element={<ImagesAlbum selectedAlbum={selectedAlbum} />} />
         <Route path='*' element={<NotFound />} />
-        
       </Routes>
     </BrowserRouter>
   );

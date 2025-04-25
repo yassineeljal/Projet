@@ -6,10 +6,9 @@ import Nav from "../../components/Navbar/Nav.jsx";
 function AboutPixiosPage() {
     return (
         <div className="aboutUs">
-            <Nav/>
-            <AboutPixiosComponent/>
+            <Nav />
+            <AboutPixiosComponent />
             <Footer />
-
         </div>
     );
 }

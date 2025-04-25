@@ -3,11 +3,8 @@ import React, { useEffect, useState } from 'react';
 function ClientService() {
 
   const [auth, setAuth] = useState(false);
-  const [authReady, setAuthReady] = useState(false); 
+  const [authReady, setAuthReady] = useState(false);
   const [selectedAlbum, setSelectedAlbum] = useState("")
-
-
-
 
   const [user, setUser] = useState({
     username: "",
@@ -19,7 +16,7 @@ function ClientService() {
     if (localAuth === "true") {
       setAuth(true);
     }
-    setAuthReady(true); 
+    setAuthReady(true);
   }, []);
 
   useEffect(() => {
@@ -29,7 +26,7 @@ function ClientService() {
   return {
     auth,
     setAuth,
-    authReady, 
+    authReady,
     user,
     setUser,
     selectedAlbum,

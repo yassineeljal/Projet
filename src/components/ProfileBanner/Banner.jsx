@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaFacebook, FaTwitter, FaInstagram, FaEdit } from "react-icons/fa";
-import profilePic from '../../assets/profil.avif'; 
+import profilePic from '../../assets/profil.avif';
 
 function Banner({ }) {
   const [profileImage, setProfileImage] = useState(localStorage.getItem('profileImage') || profilePic);
-  
+
   const fileInputRef = useRef(null);
 
   useEffect(() => {
@@ -18,18 +18,18 @@ function Banner({ }) {
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-        setProfileImage(reader.result); 
+        setProfileImage(reader.result);
       };
       reader.readAsDataURL(file);
     }
   };
 
   const triggerFileInput = () => {
-    fileInputRef.current.value = null; // Réinitialise la valeur pour que le même fichier puisse être sélectionné plusieurs fois
-    fileInputRef.current.click(); 
+    fileInputRef.current.value = null;
+    fileInputRef.current.click();
   };
 
-  
+
 
   return (
     <div className="relative w-full h-56 bg-gradient-to-r from-blue-500 to-purple-600 text-white flex items-center justify-center shadow-lg overflow-hidden">
@@ -50,10 +50,9 @@ function Banner({ }) {
             className="w-24 h-24 rounded-full border-4 border-white shadow-md cursor-pointer transition duration-300 group-hover:brightness-50"
             onClick={triggerFileInput}
           />
-         
+
         </div>
 
-        {/* Infos utilisateur */}
         <div>
           <h2 className="text-2xl font-semibold mr-5">
             {localStorage.getItem("username")}

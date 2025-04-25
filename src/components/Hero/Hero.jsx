@@ -15,12 +15,11 @@ const navigation = [
 function Hero({ handleSearch, changement }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Fonction pour scroller vers le bas de la page (un peu plus bas que le milieu)
   const handleButtonClick = (e) => {
     e.preventDefault();
-    handleSearch(e);  // Appelle la fonction de recherche
-    const scrollPosition = window.innerHeight * 1;  // Position à 1.5 fois la hauteur de la fenêtre
-    window.scrollTo({ top: scrollPosition, behavior: 'smooth' }); // Scrolle jusqu'à cette position
+    handleSearch(e);
+    const scrollPosition = window.innerHeight * 1;
+    window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
   };
 
   return (
@@ -109,9 +108,7 @@ function Hero({ handleSearch, changement }) {
         </div>
       </div>
 
-      {/* Résultats de recherche, qui apparaîtront en bas */}
       <div className="mt-20">
-        {/* Code pour afficher les images recherchées ici */}
       </div>
     </div>
   );

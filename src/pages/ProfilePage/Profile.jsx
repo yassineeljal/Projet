@@ -6,24 +6,23 @@ import Footer from "../../components/Footer/Footer.jsx";
 import { useNavigate } from 'react-router-dom';
 
 
-function Profile({auth, setAuth, userProfile}) {
+function Profile({ auth, setAuth, userProfile }) {
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
     if (!auth) {
       navigate("/Login");
-      
+
     }
   }, [auth, navigate]);
-    return (
-        <>
-           <Nav auth = {auth} setAuth = {setAuth} />
-           <Banner userProfile = {userProfile} />
-           <GrosBoutons/>
-           <Footer/>
-           
-        </>
-    );
+  return (
+    <>
+      <Nav auth={auth} setAuth={setAuth} />
+      <Banner userProfile={userProfile} />
+      <GrosBoutons />
+      <Footer />
+    </>
+  );
 }
 
 export default Profile;

@@ -30,7 +30,6 @@ function Nav() {
     <Disclosure as="nav" className="bg-black">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
-          {/* Mobile menu button */}
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset">
               <span className="absolute -inset-0.5" />
@@ -40,14 +39,11 @@ function Nav() {
             </DisclosureButton>
           </div>
 
-          {/* Logo & Navigation Links */}
           <div className="flex items-center justify-between w-full">
-            {/* Logo */}
             <div className="flex-shrink-0">
               <img alt="Pixios Logo" src={Logo} className="h-8 w-auto" />
             </div>
 
-            {/* Navigation Links */}
             <div className="flex-1 flex justify-center space-x-6 sm:ml-6">
               {navigation.map((item) => (
                 <a
@@ -64,9 +60,7 @@ function Nav() {
               ))}
             </div>
 
-            {/* Notifications and Profile */}
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              {/* Bell Icon */}
               <button
                 type="button"
                 className="relative rounded-full bg-black p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black focus:outline-hidden"
@@ -76,7 +70,6 @@ function Nav() {
                 <BellIcon aria-hidden="true" className="w-6 h-6" />
               </button>
 
-              {/* Profile Dropdown */}
               <Menu as="div" className="relative ml-3">
                 <div>
                   <MenuButton className="relative flex rounded-full bg-black text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black focus:outline-hidden">
@@ -109,7 +102,6 @@ function Nav() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <DisclosurePanel className="sm:hidden">
         <div className="space-y-1 px-2 pt-2 pb-3">
           {navigation.map((item) => (

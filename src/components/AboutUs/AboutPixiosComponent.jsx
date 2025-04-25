@@ -17,7 +17,6 @@ const AboutPixiosComponent = () => {
       <h2 className="text-center text-2xl mt-8 font-semibold">À propos de nous</h2>
       <div className="flex flex-wrap justify-center mt-6">
 
-        {/* TAKFA */}
         <div className="sm:w-1/2 lg:w-1/3 p-4">
           <div className="shadow-lg rounded-lg overflow-hidden bg-white/10 text-center backdrop-blur-md">
             <div className="flex justify-center mt-6">
@@ -38,7 +37,6 @@ const AboutPixiosComponent = () => {
           </div>
         </div>
 
-        {/* YASSINE */}
         <div className="sm:w-1/2 lg:w-1/3 p-4">
           <div className="shadow-lg rounded-lg overflow-hidden bg-white/10 text-center backdrop-blur-md">
             <div className="flex justify-center mt-6">

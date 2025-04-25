@@ -5,7 +5,7 @@ import './Album.css';
 import axios from 'axios';
 
 function Album({ auth, setSelectedAlbum }) {
-  
+
   const navigate = useNavigate();
   const [albums, setAlbums] = useState([]);
   const [newAlbumName, setNewAlbumName] = useState('');
@@ -74,7 +74,7 @@ function Album({ auth, setSelectedAlbum }) {
         )}
 
         <div className="album-list">
-          {albums.map((album,i) => (
+          {albums.map((album, i) => (
             <div
               key={album.id || i}
               className="album-item"

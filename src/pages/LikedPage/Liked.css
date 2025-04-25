@@ -1,7 +1,7 @@
 .liked-container {
   padding: 60px 20px 100px;
   min-height: 100vh;
-  background: linear-gradient(to right, #1f1c2c, #302b63, #24243e); /* Dégradé sombre violet/bleu */
+  background: linear-gradient(to right, #1f1c2c, #302b63, #24243e); 
   color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
@@ -14,12 +14,10 @@
   color: #e0e0ff;
 }
 
-/* ImageList */
 .MuiImageList-root {
   padding-bottom: 80px;
 }
 
-/* ImageListItem img */
 .MuiImageListItem-root img {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
