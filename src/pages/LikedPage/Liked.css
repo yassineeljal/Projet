@@ -1,10 +1,32 @@
 .liked-container {
-    padding: 40px;
-    text-align: center;
-  }
-  
-  .liked-container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
+  padding: 60px 20px 100px;
+  min-height: 100vh;
+  background: linear-gradient(to right, #1f1c2c, #302b63, #24243e); /* Dégradé sombre violet/bleu */
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.liked-container h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: #e0e0ff;
+}
+
+/* ImageList */
+.MuiImageList-root {
+  padding-bottom: 80px;
+}
+
+/* ImageListItem img */
+.MuiImageListItem-root img {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.MuiImageListItem-root img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px #c084fc;
+}

@@ -19,8 +19,8 @@ function HomeClient({auth, user}) {
 
     const fetchImage = async () => {
         try {
-        const response = await axios.get(`${API_URL}?query=${value}&client_id=${import.meta.env.VITE_API_KEY}`);
-        setImage(response.data.results);
+            const response = await axios.get(`${API_URL}?query=${value}&client_id=${import.meta.env.VITE_API_KEY}&per_page=9`);
+            setImage(response.data.results);
         console.log(response.data.results)
         } catch (error) {
         console.error("Error fetching image:", error);

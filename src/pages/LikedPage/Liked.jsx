@@ -20,13 +20,13 @@ function Liked({ auth, user }) {
   useEffect(() => {
     const fetchImagesLiked = async () => {
       try {
-          const response = await axios.post(`http://localhost:8888/image/getImageInLiked/${localStorage.getItem("username")}`);
-          setImages(response.data);
-          console.log(response.data);
+        const response = await axios.post(`http://localhost:8888/image/getImageInLiked/${localStorage.getItem("username")}`);
+        setImages(response.data);
+        console.log(response.data);
       } catch (error) {
-          console.error("Error fetching Liked:", error);
+        console.error("Error fetching Liked:", error);
       }
-  };
+    };
 
     if (auth) {
       fetchImagesLiked();
@@ -35,38 +35,39 @@ function Liked({ auth, user }) {
 
   return (
     <>
-    <Nav />
-    <Box
-        sx={{
-            width: '100%',         
-            height: '100vh',       
-            overflowY: 'auto',     
-            p: 2,                  
-            paddingBottom: '80px', 
-        }}
-    >
-        <ImageList variant="masonry" cols={3} gap={16}>
+      <Nav />
+      <div className="liked-container">
+        <Box
+          sx={{
+            width: '100%',
+            maxWidth: '1200px',
+            margin: '0 auto',
+            overflowY: 'auto',
+            paddingBottom: '80px',
+          }}
+        >
+          <ImageList variant="masonry" cols={3} gap={16}>
             {images.map((image, i) => (
-                <ImageListItem key={i}>
-                    <img
-                        srcSet={`${image.url}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                        src={`${image.url}?w=248&fit=crop&auto=format`}
-                        alt={`image-${i}`}
-                        loading="lazy"
-                        style={{
-                            width: '100%',
-                            height: '200px',
-                            objectFit: 'cover', 
-                            display: 'block',
-                            
-                        }}
-                    />
-                </ImageListItem>
+              <ImageListItem key={i}>
+                <img
+                  srcSet={`${image.url}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                  src={`${image.url}?w=248&fit=crop&auto=format`}
+                  alt={`image-${i}`}
+                  loading="lazy"
+                  style={{
+                    width: '100%',
+                    height: '200px',
+                    objectFit: 'cover',
+                    display: 'block',
+                  }}
+                />
+              </ImageListItem>
             ))}
-        </ImageList>
-    </Box>
+          </ImageList>
+        </Box>
+      </div>
     </>
-);
+  );
 }
 
 export default Liked;

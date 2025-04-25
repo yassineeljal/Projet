@@ -1,138 +1,98 @@
-
 import { useEffect, useState } from "react";
-import Logo from "../../assets/picsN.png"
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-
-
+import Logo from "../../assets/picsB.png";
 
 function Login({ setAuth, auth, user, setUser }) {
-
-
   const navigate = useNavigate();
+  const [error, setError] = useState(false);
 
+  useEffect(() => {
+    if (auth) {
+      navigate("/Profile");
+    }
+  }, [auth, navigate]);
 
-const [error, setError] = useState(false);
+  const setAttribut = (e) => {
+    const value = e.target.value;
+    setUser({ ...user, [e.target.name]: value });
+  };
 
-useEffect(() => {
-  if (auth) {
-  navigate("/Profile");
-  }
-}, [navigate])
-
-
-
-const setAttribut = (e) => {
-  const value = e.target.value;
-  setUser({...user, [e.target.name]: value})
-}
-
-
-const submitLogin = async (e) => {
-  e.preventDefault();
-  try {
-    console.log(user.username)
-      const response = await axios.post(`http://localhost:8888/pixios/login/${user.username}/${user.password}`,);
+  const submitLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `http://localhost:8888/pixios/login/${user.username}/${user.password}`
+      );
       if (response.data) {
-          setAuth(true)
-          localStorage.setItem("username", user.username)
-          localStorage.setItem("auth", "true");
-          navigate("/Profile")
-          console.log("connexion reussi")
-
+        setAuth(true);
+        localStorage.setItem("username", user.username);
+        localStorage.setItem("auth", "true");
+        navigate("/Profile");
+        console.log("connexion réussie");
       } else {
-          setError(true);
+        setError(true);
       }
-  } catch (err) {
+    } catch (err) {
       console.error("Login failed", err);
       setError(true);
-  }
-};
-
-
-
-
+    }
+  };
 
   return (
-    <>
-      <div className="flex h-220 flex-1 flex-col justify-center px-6 py-12 lg:px-8  bg-white">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm ">
-          <img
-            alt="Your Company"
-            src={Logo}
-            className="mx-auto h-50 w-auto"
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-[#1f1c2c] via-[#302b63] to-[#24243e] text-white px-4">
+      <div className="w-full max-w-md p-8 rounded-2xl bg-white/10 backdrop-blur-md shadow-xl border border-white/20">
+        <div className="flex justify-center mb-6">
+          <img src={Logo} alt="Pixios Logo" className="h-20 drop-shadow" />
+        </div>
+
+        <h2 className="text-2xl font-bold text-center mb-8">
+          Connectez-vous à votre compte
+        </h2>
+
+        <form onSubmit={submitLogin} className="space-y-4">
+          <input
+            type="text"
+            name="username"
+            placeholder="Nom d'utilisateur"
+            value={user.username}
+            onChange={setAttribut}
+            required
+            className="w-full px-4 py-2 rounded-lg bg-white/10 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-violet-500"
           />
-          <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-            
-Connectez-vous à votre compte
-          </h2>
-        </div>
+          <input
+            type="password"
+            name="password"
+            placeholder="Mot de passe"
+            value={user.password}
+            onChange={setAttribut}
+            required
+            className="w-full px-4 py-2 rounded-lg bg-white/10 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-violet-500"
+          />
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6" onSubmit={(e) => submitLogin(e)}>
-            <div>
-              <label htmlFor="username" className="block text-sm/6 font-medium text-gray-900">
-                
-Nom d'utilisateur
-              </label>
-              <div className="mt-2">
-                <input
-                  id="username"
-                  name="username"
-                  type="text"
-                  required
-                  autoComplete="username"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                  onChange={(e) => setAttribut(e)}
-                  value={user.username}
-                  
-                />
-              </div>
-            </div>
+          <button
+            type="submit"
+            className="w-full mt-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 font-semibold transition"
+          >
+            Se connecter
+          </button>
+        </form>
 
-            <div>
-              <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">
-                Mot de passe
-                </label>
-              </div>
-              <div className="mt-2">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  required
-                  autoComplete="current-password"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                  onChange={(e) => setAttribut(e)}
-                  value={user.password}
-                />
-              </div>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Sign in
-              </button>
-            </div>
-          </form>
-
-          <p className="mt-10 text-center text-sm/6 text-gray-500">
-            Vous n'êtes pas membre?{' '}
-            <Link to={"/Inscription"} className="font-semibold text-indigo-600 hover:text-indigo-500">
-              S'inscrire
-            </Link>
+        {error && (
+          <p className="mt-4 text-center text-red-300">
+            Identifiants incorrects
           </p>
-        </div>
-        {error && <p style={{color: "red"}}>Invalid credentials</p>}
+        )}
 
+        <p className="mt-6 text-center text-sm text-gray-300">
+          Pas encore inscrit ?{" "}
+          <Link to="/Inscription" className="text-violet-300 hover:underline">
+            Crée ton compte ici
+          </Link>
+        </p>
       </div>
-    </>
-  )
+    </div>
+  );
 }
-
 
 export default Login;
