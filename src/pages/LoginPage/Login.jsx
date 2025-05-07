@@ -6,6 +6,8 @@ import Logo from "../../assets/picsB.png";
 function Login({ setAuth, auth, user, setUser }) {
   const navigate = useNavigate();
   const [error, setError] = useState(false);
+  const API_URL = import.meta.env.VITE_API_URL;
+  
 
   useEffect(() => {
     if (auth) {
@@ -22,7 +24,7 @@ function Login({ setAuth, auth, user, setUser }) {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `http://localhost:8888/pixios/login/${user.username}/${user.password}`
+        `${API_URL}/pixios/login/${user.username}/${user.password}`
       );
       if (response.data) {
         setAuth(true);

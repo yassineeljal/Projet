@@ -8,11 +8,12 @@ function CardsAuth({ image }) {
   const [showAlbums, setShowAlbums] = useState(false);
   const [albums, setAlbums] = useState([]);
   const [imageUrl, setImageUrl] = useState("");
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const fetchAlbum = async () => {
     try {
       const username = localStorage.getItem("username");
-      const response = await axios.post(`http://localhost:8888/album/getAllAlbum/${username}`);
+      const response = await axios.post(`${API_URL}/album/getAllAlbum/${username}`);
       setAlbums(response.data);
       console.log(response.data);
     } catch (error) {
@@ -23,7 +24,7 @@ function CardsAuth({ image }) {
   const addImageToAlbum = async (id) => {
     const picture = { url: imageUrl, id: id };
     try {
-      const response = await axios.post(`http://localhost:8888/image/addImageToAlbum`, picture);
+      const response = await axios.post(`${API_URL}/image/addImageToAlbum`, picture);
       if (response.data) {
         console.log("ajout réussi");
         setShowAlbums(false);
@@ -44,7 +45,7 @@ function CardsAuth({ image }) {
     const picture = { url: src, username: localStorage.getItem("username") };
     console.log(picture);
     try {
-      const response = await axios.post(`http://localhost:8888/image/addImageToLiked`, picture);
+      const response = await axios.post(`${API_URL}/image/addImageToLiked`, picture);
       if (response.data) {
         console.log("ajout réussi");
       }

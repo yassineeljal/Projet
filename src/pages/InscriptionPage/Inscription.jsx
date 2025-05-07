@@ -5,6 +5,8 @@ import axios from "axios";
 
 function Inscription({ auth }) {
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL;
+
 
   const [newUser, setNewUser] = useState({
     email: "",
@@ -28,7 +30,7 @@ function Inscription({ auth }) {
   const submitNewUser = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8888/pixios/createUser", newUser)
+      .post(`${API_URL}/pixios/createUser`, newUser)
       .then(() => {
         navigate("/");
       })

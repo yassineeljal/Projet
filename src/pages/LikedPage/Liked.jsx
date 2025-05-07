@@ -10,6 +10,7 @@ import ImageListItem from '@mui/material/ImageListItem';
 function Liked({ auth, user }) {
   const navigate = useNavigate();
   const [images, setImages] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     if (!auth) {
@@ -20,7 +21,7 @@ function Liked({ auth, user }) {
   useEffect(() => {
     const fetchImagesLiked = async () => {
       try {
-        const response = await axios.post(`http://localhost:8888/image/getImageInLiked/${localStorage.getItem("username")}`);
+        const response = await axios.post(`${API_URL}/image/getImageInLiked/${localStorage.getItem("username")}`);
         setImages(response.data);
         console.log(response.data);
       } catch (error) {

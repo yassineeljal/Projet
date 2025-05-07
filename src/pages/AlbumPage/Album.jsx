@@ -10,12 +10,15 @@ function Album({ auth, setSelectedAlbum }) {
   const [albums, setAlbums] = useState([]);
   const [newAlbumName, setNewAlbumName] = useState('');
   const [showForm, setShowForm] = useState(false);
+  const API_URL = import.meta.env.VITE_API_URL;
+
+  
 
 
   const fetchAlbum = async () => {
     try {
       const username = localStorage.getItem("username");
-      const response = await axios.post(`http://localhost:8888/album/getAllAlbum/${username}`);
+      const response = await axios.post(`${API_URL}/album/getAllAlbum/${username}`);
       setAlbums(response.data);
     } catch (error) {
       console.error("Error fetching album:", error);
@@ -34,7 +37,8 @@ function Album({ auth, setSelectedAlbum }) {
     e.preventDefault();
     try {
       const username = localStorage.getItem("username");
-      const response = await axios.post(`http://localhost:8888/album/createAlbum/${username}/${newAlbumName}`);
+
+      const response = await axios.post(`${API_URL}/album/createAlbum/${username}/${newAlbumName}`);
       if (response.data) {
         setNewAlbumName('');
         setShowForm(false);

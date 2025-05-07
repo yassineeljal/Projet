@@ -8,10 +8,12 @@ import Nav from "../../components/Navbar/Nav.jsx";
 
 function ImagesAlbum({ selectedAlbum }) {
     const [images, setImages] = useState([]);
+    const API_URL = import.meta.env.VITE_API_URL;
+
 
     const fetchImagesAlbum = async () => {
         try {
-            const response = await axios.post(`http://localhost:8888/image/getImageInAlbum/${selectedAlbum}`);
+            const response = await axios.post(`${API_URL}/image/getImageInAlbum/${selectedAlbum}`);
             setImages(response.data);
             console.log(response.data);
         } catch (error) {
